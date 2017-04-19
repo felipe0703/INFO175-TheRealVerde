@@ -29,3 +29,9 @@ Al equipo se le comentó que faltaba una separación de cada tópico o distincio
                                               
 Se solucionó el problema de separación con tópicos pero se agregó que al seleccionar uno solo se desenfoquen los demás en vez de desenfocar y sobreponer a los demas, también se recalcó el tema de los colores que significará cada actividad (en vez de iconos ), el cual para el equipo los colores significarían la dificultad de estos.
 -----------------------------------------------------------------------------------------------------------------------------------
+                                              Clase Jueves 13 de Abril
+                                                                                          
+Se instalo el entorno en todos los notebooks personales del  grupo, se hizo una base de datos de ejemplo para ver si corria esta de forma correcta lo cual se logro de manera satisfactoria.
+---------------------------------------------------------------------------------------------------------------------------------
+
+                                             
