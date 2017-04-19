@@ -31,7 +31,7 @@ Se solucionó el problema de separación con tópicos pero se agregó que al sel
 -----------------------------------------------------------------------------------------------------------------------------------
                                               Clase Jueves 13 de Abril
                                                                                           
-Se instalo el entorno en todos los notebooks personales del  grupo, se hizo una base de datos de ejemplo para ver si corria esta de forma correcta lo cual se logro de manera satisfactoria.
+Se instalo el entorno en todos los notebooks personales del  grupo, se hizo una base de datos de ejemplo para ver si  funcionamaba esta de forma correcta tanto en el eclipse como en el browser lo cual se logro de manera satisfactoria.
 ---------------------------------------------------------------------------------------------------------------------------------
 
                                              
