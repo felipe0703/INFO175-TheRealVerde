@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+ 
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Taller de Construccion de Software</h1>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+
+    <div class="color1 col-sm-3">
+
+    <div class="container">
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="container">
+          <label>
+            <input type="checkbox" data-toggle="toggle" data-style="slow">
+            Questions
+          </label>
+        </div>
+        <div class="container">
+          <label>
+            <input type="checkbox" data-toggle="toggle">
+            Parsons
+          </label>
+        </div>
+        
+        <div class="container">
+          <label>
+            <input type="checkbox" data-toggle="toggle">
+            Webex
+          </label>
+        </div>        
+         <div class="container">
+           <label>
+            <input type="checkbox" data-toggle="toggle">
+            Animated
+          </label>
+         </div>        
+      </div>
+    </div>
+      <p>Requerimiento 3, para seleccionar actividades deslice la barra</p>
+      
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Actividades</span>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+     
+      <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "400px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+      </script>
+       
+    </div>
+    
+    <div class="color2 col-sm-9">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+              
+
+            <style>
+
+              form {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+              }
+
+              label {
+                display: block;
+              }
+
+            </style>
+            <form>
+              <label><input type="radio" name="mode" value="grouped"> Grouped</label>
+              <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+            </form>
+            <svg width="960" height="500"></svg>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+            <script>
+
+            var n = 4, // The number of series.
+                m = 58; // The number of values per series.
+
+            // The xz array has m elements, representing the x-values shared by all series.
+            // The yz array has n elements, representing the y-values of each of the n series.
+            // Each yz[i] is an array of m non-negative numbers representing a y-value for xz[i].
+            // The y01z array has the same structure as yz, but with stacked [y₀, y₁] instead of y.
+            var xz = d3.range(m),
+                yz = d3.range(n).map(function() { return bumps(m); }),
+                y01z = d3.stack().keys(d3.range(n))(d3.transpose(yz)),
+                yMax = d3.max(yz, function(y) { return d3.max(y); }),
+                y1Max = d3.max(y01z, function(y) { return d3.max(y, function(d) { return d[1]; }); });
+
+            var svg = d3.select("svg"),
+                margin = {top: 40, right: 10, bottom: 20, left: 10},
+                width = +svg.attr("width") - margin.left - margin.right,
+                height = +svg.attr("height") - margin.top - margin.bottom,
+                g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            var x = d3.scaleBand()
+                .domain(xz)
+                .rangeRound([0, width])
+                .padding(0.08);
+
+            var y = d3.scaleLinear()
+                .domain([0, y1Max])
+                .range([height, 0]);
+
+            var color = d3.scaleOrdinal()
+                .domain(d3.range(n))
+                .range(d3.schemeCategory20c);
+
+            var series = g.selectAll(".series")
+              .data(y01z)
+              .enter().append("g")
+                .attr("fill", function(d, i) { return color(i); });
+
+            var rect = series.selectAll("rect")
+              .data(function(d) { return d; })
+              .enter().append("rect")
+                .attr("x", function(d, i) { return x(i); })
+                .attr("y", height)
+                .attr("width", x.bandwidth())
+                .attr("height", 0);
+
+            rect.transition()
+                .delay(function(d, i) { return i * 10; })
+                .attr("y", function(d) { return y(d[1]); })
+                .attr("height", function(d) { return y(d[0]) - y(d[1]); });
+
+            g.append("g")
+                .attr("class", "axis axis--x")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x)
+                    .tickSize(0)
+                    .tickPadding(6));
+
+            d3.selectAll("input")
+                .on("change", changed);
+
+            var timeout = d3.timeout(function() {
+              d3.select("input[value=\"grouped\"]")
+                  .property("checked", true)
+                  .dispatch("change");
+            }, 2000);
+
+            function changed() {
+              timeout.stop();
+              if (this.value === "grouped") transitionGrouped();
+              else transitionStacked();
+            }
+
+            function transitionGrouped() {
+              y.domain([0, yMax]);
+
+              rect.transition()
+                  .duration(500)
+                  .delay(function(d, i) { return i * 10; })
+                  .attr("x", function(d, i) { return x(i) + x.bandwidth() / n * this.parentNode.__data__.key; })
+                  .attr("width", x.bandwidth() / n)
+                .transition()
+                  .attr("y", function(d) { return y(d[1] - d[0]); })
+                  .attr("height", function(d) { return y(0) - y(d[1] - d[0]); });
+            }
+
+            function transitionStacked() {
+              y.domain([0, y1Max]);
+
+              rect.transition()
+                  .duration(500)
+                  .delay(function(d, i) { return i * 10; })
+                  .attr("y", function(d) { return y(d[1]); })
+                  .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+                .transition()
+                  .attr("x", function(d, i) { return x(i); })
+                  .attr("width", x.bandwidth());
+            }
+
+            // Returns an array of m psuedorandom, smoothly-varying non-negative numbers.
+            // Inspired by Lee Byron’s test data generator.
+            // http://leebyron.com/streamgraph/
+            function bumps(m) {
+              var values = [], i, j, w, x, y, z;
+
+              // Initialize with uniform random values in [0.1, 0.2).
+              for (i = 0; i < m; ++i) {
+                values[i] = 0.1 + 0.1 * Math.random();
+              }
+
+              // Add five random bumps.
+              for (j = 0; j < 5; ++j) {
+                x = 1 / (0.1 + Math.random());
+                y = 2 * Math.random() - 0.5;
+                z = 10 / (0.1 + Math.random());
+                for (i = 0; i < m; i++) {
+                  w = (i / m - y) * z;
+                  values[i] += x * Math.exp(-w * w);
+                }
+              }
+
+              // Ensure all values are positive.
+              for (i = 0; i < m; ++i) {
+                values[i] = Math.max(0, values[i]);
+              }
+
+              return values;
+            }
+
+            </script>
+
+
+          </div>
+        </div>
+      </div>
+
+        <div class="container">
+          <div class="row">
+          <div class="color2 col-sm-12">
+              <h2>Row 2</h2>
+              <label>
+          <input type="checkbox" checked data-toggle="toggle" data-size="large">
+          Questions
+        </label>
+
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <h3>The Real Verde</h3>
+    </div>    
+  </footer>
+
+</body>
+</html>
