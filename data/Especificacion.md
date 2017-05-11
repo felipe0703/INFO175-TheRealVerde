@@ -22,9 +22,10 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 ]
 
 ```
+### Salida JSON 
 
 
-ejemplo json
+```javascript
 
 [
   { 
@@ -59,6 +60,7 @@ ejemplo json
     ]
   }
 ]
+```
 
 
 
