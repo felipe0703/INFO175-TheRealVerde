@@ -5,6 +5,12 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 
 ```javascript
+[
+  TOPIC,
+  ...
+]
+
+// TOPIC object:
 
 [
   { 
@@ -26,6 +32,12 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 
 ```javascript
+[
+  TOPIC,
+  ...
+]
+
+// TOPIC object:
 
 [
   { 
@@ -62,6 +74,9 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 ]
 ```
 
+## Consulta SQL a utilizar
+```javascript
+asdfdsdsd
 
-
+```
   
