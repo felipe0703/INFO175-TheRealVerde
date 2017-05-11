@@ -1,6 +1,10 @@
-Especificaciones de The Real Verde:
+# The Real Verde
+## Especificaciones JSON
+### Descripción
+Este JSON mostrará la información respecto a cada topico enfocado a nuestra problematica
 
 
+```javascript
 
 [
   { 
@@ -16,6 +20,8 @@ Especificaciones de The Real Verde:
      ]
   }
 ]
+
+```
 
 
 ejemplo json
