@@ -1,6 +1,7 @@
-Color: dificultad del material
-Tamaño: frecuencia de visita al topico
-distancia radial: tiempo de visita en cada topico 
-icono: actividad
-zona(angulo): topico
+Color: Tipo de Actividad
+Tamaño: Frecuencia de visita de la actividad
+Distancia en el eje y: tiempo de visita en cada actividad 
+zona: topico
+sub-zona: actividades
+Degradado del color: dificultad del material(mientras mas degradado mas facil el material)
 
