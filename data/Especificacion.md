@@ -14,14 +14,14 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 [
   { 
-    "Id_topico" : number, 
+    "Id_topico" : String, 
     "Actividades" : [
 	{	
 	"id_actividad": number, 		//identificador del tipo de actividad
 	tipo: "String", 		        //dato String
 	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
-	intentos: number, 	 		//promedio de intentos de actividad por parte de los usuarios en un topico. 	
-	intentos_incorrectos: number 		//promedio de errores en una actividad por parte de los usuarios en un topico. 	
+	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico. 	
+	intentos_incorrectos: number 		//numero de errores en una actividad por parte de los usuarios en un topico. 	
 	}
      ]
   }
@@ -41,7 +41,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 [
   { 
-    "Id_topico" : "1", 
+    "Id_topico" : "Functions", 
     "Actividades" : [
 	{	
 	"id_actividad": 1, 
@@ -60,7 +60,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
     ]
   },
   { 
-    "Id_topico" : "3", 
+    "Id_topico" : "Exceptions", 
     "Actividades" : [
 	{	
 	"id_actividad": 4, 
