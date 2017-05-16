@@ -76,8 +76,49 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 ## Consulta SQL a utilizar
 ```SQL
-...
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+from activity_traces
+where (durationseconds>0 and appid > 0) and applabel = "ANIMATED_EXAMPLE"
+group by topicname ;
 
+select avg(durationseconds) as tiempo_promedio ,  count(attemptno) as intentos,applabel, topicname
+from activity_traces
+where (durationseconds>0 and appid > 0) and applabel = "QUIZPET"
+group by topicname ;
 
-```
-  
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+from activity_traces
+where (durationseconds>0 and appid > 0) and applabel = "PARSONS"
+group by topicname ;
+
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+from activity_traces
+where (durationseconds>0 and appid > 0 and attemptno>0) and applabel = "WEBEX"
+group by topicname ;
+
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=0) and applabel = "PARSONS"
+group by topicname ;
+
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=0) and applabel = "QUIZPET"
+group by topicname ;
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=1) and applabel = "PARSONS"
+group by topicname ;
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=1) and applabel = "QUIZPET"
+group by topicname ;
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=-1) and applabel = "ANIMATED_EXAMPLE"
+group by topicname ;
+select applabel,topicname, count(result) as intentos_incorrectos
+from activity_traces at
+where (at.appid>0 and at.result=-1) and applabel = "WEBEX"
+group by topicname ;
+
