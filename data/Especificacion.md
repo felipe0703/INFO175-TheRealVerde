@@ -32,11 +32,6 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 
 ```javascript
-[
-  TOPIC,
-  ...
-]
-
 // TOPIC object:
 
 [
@@ -76,48 +71,67 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 ## Consulta SQL a utilizar
 ```SQL
-select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+/////// consulta que entrega tiempo promedio, intentos incorrectos, tipo de actividad "ANIMATED_EXAMPLE"   y tipo de topico.....
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as total_Intentos, applabel as actividad, topicname as topicos
 from activity_traces
-where (durationseconds>0 and appid > 0) and applabel = "ANIMATED_EXAMPLE"
+where (durationseconds>=0 and appid > 0) and applabel = "ANIMATED_EXAMPLE"
 group by topicname ;
 
-select avg(durationseconds) as tiempo_promedio ,  count(attemptno) as intentos,applabel, topicname
+///////  QUIZPET,  tiempo promedio, intentos incorrectos, tipo de topico
+select avg(durationseconds) as tiempo_promedio ,  count(attemptno) as total_Intentos,applabel as actividad, topicname as topicos
 from activity_traces
-where (durationseconds>0 and appid > 0) and applabel = "QUIZPET"
+where (durationseconds>=0 and appid > 0) and applabel = "QUIZPET"
 group by topicname ;
 
-select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+
+/////// PARSONS, tiempo promedio, intentos incorrectos, tipo de topico
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as total_Intentos, applabel as actividad, topicname as topicos
 from activity_traces
-where (durationseconds>0 and appid > 0) and applabel = "PARSONS"
+where (durationseconds>=0 and appid > 0) and applabel = "PARSONS"
 group by topicname ;
 
-select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname
+
+////// WEBEX, tiempo promedio, intentos incorrectos, tipo de topico
+select avg(durationseconds) as tiempo_promedio , count(attemptno) as total_Intentos, applabel as actividad, topicname as topicos
 from activity_traces
-where (durationseconds>0 and appid > 0 and attemptno>0) and applabel = "WEBEX"
+where (durationseconds>=0 and appid > 0) and applabel = "WEBEX"
 group by topicname ;
 
+////////////////////////////////////////////////////////////////////////////// 
+
+/////  intentos incorrectos en una actividad y topico
 select applabel,topicname, count(result) as intentos_incorrectos
 from activity_traces at
 where (at.appid>0 and at.result=0) and applabel = "PARSONS"
+group by topicname ; 
+
+/////  intentos correctos en una actividad y topico
+select applabel,topicname, count(result) as intentos_correctos
+from activity_traces at
+where (at.appid>0 and at.result=1) and applabel = "PARSONS"
 group by topicname ;
 
+
+/////  intentos incorrectos en una actividad y topico
 select applabel,topicname, count(result) as intentos_incorrectos
 from activity_traces at
 where (at.appid>0 and at.result=0) and applabel = "QUIZPET"
 group by topicname ;
-select applabel,topicname, count(result) as intentos_incorrectos
-from activity_traces at
-where (at.appid>0 and at.result=1) and applabel = "PARSONS"
-group by topicname ;
-select applabel,topicname, count(result) as intentos_incorrectos
+
+/////  intentos correctos en una actividad y topico
+select applabel,topicname, count(result) as intentos_correctos
 from activity_traces at
 where (at.appid>0 and at.result=1) and applabel = "QUIZPET"
 group by topicname ;
-select applabel,topicname, count(result) as intentos_incorrectos
+
+
+
+select applabel,topicname, count(result) as actividad_vista
 from activity_traces at
 where (at.appid>0 and at.result=-1) and applabel = "ANIMATED_EXAMPLE"
 group by topicname ;
-select applabel,topicname, count(result) as intentos_incorrectos
+
+select applabel,topicname, count(result) as actividad_vista
 from activity_traces at
 where (at.appid>0 and at.result=-1) and applabel = "WEBEX"
 group by topicname ;
