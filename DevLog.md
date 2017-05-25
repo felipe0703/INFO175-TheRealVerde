@@ -6,7 +6,6 @@ Nombre de grupo: The Real Verde
 Integrantes: - Felipe Aguilera  
              - Matías Cárcamo
              - René Fuentes
-             - Fabián Sánchez
              - Felipe Zabala
          
 Requerimiento : 
