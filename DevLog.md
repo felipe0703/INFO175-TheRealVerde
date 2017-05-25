@@ -56,6 +56,11 @@ Como equipo de trabajo nos reunimos con el profesor para definir parametros y re
 
 Se realizará a partir de ahora un plan de trabajo definido en semanas, dentro del cual se determinaron los tiempos en semanas a dedicar en cada punto nombrado arriba y la persona encargada de avanzar en esos puntos.
 Además se modifico la forma en que desplegará la información de acuerdo al punto seleccionado en el grafico.
---------------------------------------------------------------------------------------------------------------------------------
-
+-------------------------------------------------------------------------------------------------------------------------------
+                                          Sesion Martes 23 de Mayo
+Como Equipo nos asignamos los roles para la siguiente actividad, luego se comenzo a trabajar orientado al servicio de datos, complementarlo, comentarlo y entenderlo.
+Felipe Aguilera se hara cargo de la visualizacion, comentarla y entenderla. Mientras Tanto Rene y Felipe Zabala se hacen cargo del servicio de datos.
+En el caso del Team Servicio de Datos se esta encargando de implementar y corregir las clases del GetTotalbyUsuer para definir el JSON, al mismo tiempo, se agregan las consultas sql que faltaban para obtener todos los datos que necesitamos(datos puesto en la leyenda)
+Se actualiza el plan, se defininen que tareas que faltan por realizar, en la planilla de planificacion, se definen tareas a corto plazo como equipo, se logro un avance en la generacion del JSON
+                                          
                                              
