@@ -1,0 +1,20 @@
+html {
+	min-height: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+body, table, select, input {
+	background-color: #ffffff;
+	font-size: 11px;
+	cursor: default;
+}
+
+table td {
+	vertical-align: top;
+}
+
+#data_table td {
+	padding: 2px 10px 2px 10px;
+	border-top: 1px solid #999999;
+}
