@@ -64,6 +64,8 @@ Se actualiza el plan, se defininen que tareas que faltan por realizar, en la pla
 
 -------------------------------------------------------------------------------------------------------------------------------
                                         Reunion Jueves 25 de Mayo
-El dia jueves nos reunimos con el profesor para conversar acerca del avance, primero, se desarrollo una actividad en la cual cada integrante del grupo evaluaba el avance, siendo un 40% el denominado por la mayoria. Al mismo tiempo, cada integrante estimo las horas-hombre que cree que se necesitan para terminar el proyecto. Despues de esta actividad, el profesor evaluo nuestro avance durante la semana, donde teniamos bastantes carencias, no habiamos actualizado la bitacora, falto subir el codigo de los servicios, y actualizar el plan.
+El dia jueves nos reunimos con el profesor para conversar acerca del avance, primero, se desarrollo una actividad en la cual cada integrante del grupo evaluaba el avance, siendo un 40% el denominado por la mayoria. Al mismo tiempo, cada integrante estimo las horas-hombre que cree que se necesitan para terminar el proyecto. Despues de esta actividad, el profesor evaluo nuestro avance durante la semana, donde teniamos bastantes carencias, no habiamos actualizado la bitacora, falto subir el codigo de los servicios, y actualizar el plan. Como conclusion de la reunion, como grupo sabemos ahora que se nos viene lo mas pesado, asi que nos comprometimos a trabajar mas como grupo, tener sesiones fijas a la semana, viernes y martes, para asi avanzar mas y que no solo un integrante del grupo se lleve todo el trabajo.
+
+--------------------------------------------------------------------------------------------------------------------------------
                                           
                                              
