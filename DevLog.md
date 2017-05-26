@@ -67,5 +67,7 @@ Se actualiza el plan, se defininen que tareas que faltan por realizar, en la pla
 El dia jueves nos reunimos con el profesor para conversar acerca del avance, primero, se desarrollo una actividad en la cual cada integrante del grupo evaluaba el avance, siendo un 40% el denominado por la mayoria. Al mismo tiempo, cada integrante estimo las horas-hombre que cree que se necesitan para terminar el proyecto. Despues de esta actividad, el profesor evaluo nuestro avance durante la semana, donde teniamos bastantes carencias, no habiamos actualizado la bitacora, falto subir el codigo de los servicios, y actualizar el plan. Como conclusion de la reunion, como grupo sabemos ahora que se nos viene lo mas pesado, asi que nos comprometimos a trabajar mas como grupo, tener sesiones fijas a la semana, viernes y martes, para asi avanzar mas y que no solo un integrante del grupo se lleve todo el trabajo.
 
 --------------------------------------------------------------------------------------------------------------------------------
-                                          
+                                        Sesion Viernes 26 de Mayo
+Nos reunimos para actualizara algunas consultas que nos corrigio el profesor, luego se comento el codigo de los servicios de datos, para asi poder entenderlo mejor y poder trabajar mejor sobre el, a su vez, se actualizo la bitacora que era un punto que nos faltaba, se asigno que el martes ( proxima sesion grupal) se actulizara el plan con lo avanzado de cada uno y lo que nos falta aun, el mismo martes se preparara la presentacion del proximo dia jueves.
+--------------------------------------------------------------------------------------------------------------------------------
                                              
