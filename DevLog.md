@@ -61,5 +61,9 @@ Como Equipo nos asignamos los roles para la siguiente actividad, luego se comenz
 Felipe Aguilera se hara cargo de la visualizacion, comentarla y entenderla. Mientras Tanto Rene y Felipe Zabala se hacen cargo del servicio de datos.
 En el caso del Team Servicio de Datos se esta encargando de implementar y corregir las clases del GetTotalbyUsuer para definir el JSON, al mismo tiempo, se agregan las consultas sql que faltaban para obtener todos los datos que necesitamos(datos puesto en la leyenda)
 Se actualiza el plan, se defininen que tareas que faltan por realizar, en la planilla de planificacion, se definen tareas a corto plazo como equipo, se logro un avance en la generacion del JSON
+
+-------------------------------------------------------------------------------------------------------------------------------
+                                        Reunion Jueves 25 de Mayo
+El dia jueves nos reunimos con el profesor para conversar acerca del avance, primero, se desarrollo una actividad en la cual cada integrante del grupo evaluaba el avance, siendo un 40% el denominado por la mayoria. Al mismo tiempo, cada integrante estimo las horas-hombre que cree que se necesitan para terminar el proyecto. Despues de esta actividad, el profesor evaluo nuestro avance durante la semana, donde teniamos bastantes carencias, no habiamos actualizado la bitacora, falto subir el codigo de los servicios, y actualizar el plan.
                                           
                                              
