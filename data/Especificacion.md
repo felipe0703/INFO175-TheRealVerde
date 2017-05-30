@@ -21,7 +21,8 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	tipo: "String", 		        //dato String
 	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
 	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico. 	
-	intentos_incorrectos: number 		//numero de errores en una actividad por parte de los usuarios en un topico. 	
+	intentos_incorrectos: number, 		//numero de errores en una actividad por parte de los usuarios en un topico.
+	intentos_correctos_corregidos:number    //numero de errores corregidos en una actividad por parte de los usuarios en un topico           
 	}
      ]
   }
@@ -44,6 +45,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	tiempo_promedio: 35.1, 
 	intentos: 10,
 	intentos_incorrectos: 6
+	intentos_correctos_corregidos: 5
 	},
 	{	
 	"id_actividad": 10, 
@@ -51,6 +53,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	tiempo_promedio: 23.1, 
 	intentos: 6,
 	intentos_incorrectos: 4
+	intentos_correctos_corregidos: 6
 	
     ]
   },
@@ -63,6 +66,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	tiempo_promedio: 10, 
 	intentos: 3,
 	intentos_incorrectos: 2
+	intentos_correctos_corregidos: 5
 	}
     ]
   }
