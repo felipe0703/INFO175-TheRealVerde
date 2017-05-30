@@ -70,4 +70,5 @@ El dia jueves nos reunimos con el profesor para conversar acerca del avance, pri
                                         Sesion Viernes 26 de Mayo
 Nos reunimos para actualizara algunas consultas que nos corrigio el profesor, luego se comento el codigo de los servicios de datos, para asi poder entenderlo mejor y poder trabajar mejor sobre el, a su vez, se actualizo la bitacora que era un punto que nos faltaba, se asigno que el martes ( proxima sesion grupal) se actulizara el plan con lo avanzado de cada uno y lo que nos falta aun, el mismo martes se preparara la presentacion del proximo dia jueves.
 --------------------------------------------------------------------------------------------------------------------------------
-                                             
+                                        Sesion Martes 30 de Mayo
+Definimos parametros que nos faltaban, la dificultad, escala de colores y otros, estamos analizando los datos que nos entregan las consultas para ver que procesos o funciones matematicas para entregar un resultado a nuestro grafico. Ya esta subida las tareas actualizadas. El analisis de los datos nos ayuda bastante para asi poder saber maximos y minimos, para discretizar los datos, llegaron todos los integrantes del grupo    
