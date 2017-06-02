@@ -47,13 +47,10 @@ public class GetTotalsByUser extends HttpServlet {
 		dbInterface.openConnection(); // abrir la conexión
 		
 		// llamada a la función getSampleData que hace la consulta a la base de datos
-		ArrayList<String[]> data = dbInterface.getSampleData(); 
+		ArrayList<String[]> data1 = dbInterface.getSampleData();
 		dbInterface.closeConnection(); // cerrar la conexión
 		// obtener el objeto flujo de salida (para imprimir la respuesta)
 		PrintWriter out = response.getWriter();
-		
-		// escribir la respuesta
-				out.print(outAsJSON(data));
 			
 		//SEGUNDA CONSULTA
 				
@@ -62,13 +59,10 @@ public class GetTotalsByUser extends HttpServlet {
 		dbInterface.openConnection(); // abrir la conexión
 				
 		// llamada a la función getSampleData2 que hace la  segunda consulta a la base de datos
-		data = dbInterface.getSampleData2(); 
+		ArrayList<String[]> data2 = dbInterface.getSampleData2(); 
 		dbInterface.closeConnection(); // cerrar la conexión
 		// obtener el objeto flujo de salida (para imprimir la respuesta)
 		out = response.getWriter();
-				
-		// escribir la respuesta
-		out.print(outAsJSON(data));
 					
 		//TERCERA CONSULTA
 		
@@ -77,13 +71,10 @@ public class GetTotalsByUser extends HttpServlet {
 		dbInterface.openConnection(); // abrir la conexión
 						
 		// llamada a la función getSampleData3 que hace la  tercera consulta a la base de datos
-		data = dbInterface.getSampleData3(); 
+		ArrayList<String[]> data3 = dbInterface.getSampleData3(); 
 		dbInterface.closeConnection(); // cerrar la conexión
 		// obtener el objeto flujo de salida (para imprimir la respuesta)
 		out = response.getWriter();
-						
-		// escribir la respuesta
-		out.print(outAsJSON(data));
 		
 		// CUARTA CONSULTA
 		
@@ -92,51 +83,74 @@ public class GetTotalsByUser extends HttpServlet {
 		dbInterface.openConnection(); // abrir la conexión
 								
 		// llamada a la función getSampleData4 que hace la  cuarta consulta a la base de datos
-		data = dbInterface.getSampleData4(); 
+		ArrayList<String[]>data4 = dbInterface.getSampleData4();
+		
 		dbInterface.closeConnection(); // cerrar la conexión
 		// obtener el objeto flujo de salida (para imprimir la respuesta)
 		out = response.getWriter();
 								
+		
 		// escribir la respuesta
-		out.print(outAsJSON(data));
+		out.print(outAsJSON4(data1,data2,data3,data4));
 		
 		////////////////////////////////////////////////////
 		
 		
+		
+		
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
 	
-	/**
-	 * Este metodo escribe en formato JSON la data obtenida desde la base de datos
-	 * 
-	 * @param data
-	 * @return
-	 */
-	private String outAsJSON(ArrayList<String[]> data) {
-		String outString = "[";
-		for(String[] row : data) {
+
+	private String outAsJSON4(ArrayList<String[]> data1, ArrayList<String[]> data2, ArrayList<String[]> data3,
+			ArrayList<String[]> data4) {
+		 String outString="Topic[";
+		 for(String[] row : data1) {
+				outString += "\n "
+						+ "\", \"tiempo_promedio\":\"" + row[0] //datos primera consulta
+						+ "\", \"intentos\":\"" + row[1]
+						+ "\", \"applabel\":\"" + row[2]
+						+ "\", \"topicname\":\"" + row[3]
+						+ "\"},";
+			}
+		outString = outString.substring(0, outString.length() - 1);
+		for(String[] row : data2) {
 			outString += "\n "
-					+ "\", \"tiempo_promedio\":\"" + row[0] //datos primera consulta
-					+ "\", \"intentos\":\"" + row[1]
-					+ "\", \"applabel\":\"" + row[2]
-					+ "\", \"topicname\":\"" + row[3]
-					+ "\", \"intentos_incorrectos\":\"" + row[4] //datos primera consulta
-					+ "\", \"applabel\":\"" + row[5]
-					+ "\", \"topicname\":\"" + row[6]
-					+ "\", \"intentos_correctos_corregidos\":\"" + row[7] //datos primera consulta
-					+ "\", \"applabel\":\"" + row[8]
-					+ "\", \"topicname\":\"" + row[9]
-					+ "\", \"actividad_vista\":\"" + row[10] //datos primera consulta
-					+ "\", \"applabel\":\"" + row[11]
-					+ "\", \"topicname\":\"" + row[12]
+					
+					+ "\", \"intentos_incorrectos\":\"" + row[0] //datos segunda consulta
+					+ "\", \"applabel\":\"" + row[1]
+					+ "\", \"topicname\":\"" + row[2]
 					+ "\"},";
+					
+		}
+		outString = outString.substring(0, outString.length() - 1);
+		for(String[] row : data3) {
+			outString += "\n "
+					 + "\", \"intentos_correctos\":\"" + row[0] //datos tercera consulta
+					 + "\", \"applabel\":\"" + row[1]
+					 + "\", \"topicname\":\"" + row[2]
+					 + "\"},";
+					
+		}
+		outString = outString.substring(0, outString.length() - 1);
+		for(String[] row : data4) {
+			outString += "\n "
+					+ "\", \"actividad_vista\":\"" + row[0] //datos cuarta consulta
+					+ "\", \"applabel\":\"" + row[1]
+					+ "\", \"topicname\":\"" + row[2]
+					+ "\"},";
+					
 		}
 		outString = outString.substring(0, outString.length() - 1);
 		outString += "\n]";
+		
 		return outString;
+		
 	}
+
+
 
 }
