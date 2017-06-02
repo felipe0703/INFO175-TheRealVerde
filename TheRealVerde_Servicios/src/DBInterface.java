@@ -86,13 +86,14 @@ public class DBInterface {
 	 */
 	
 	public ArrayList<String[]> getSampleData() { //primera  consulta 
+		int id=0;
 		try {
 			ArrayList<String[]> res = new ArrayList<String[]>();
 			stmt = conn.createStatement();
 			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
 			String query = "select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname"
 					+ " from activity_traces"
-					+ " where (durationseconds>0 and appid > 0)"
+					+ " where (durationseconds>=0 and appid > 0)"
 					+ " group by topicname,applabel  "
 					+ " order by topicname,applabel ;"
 				
@@ -103,11 +104,16 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[19];
+				String[] dataPoint = new String[5];
 				dataPoint[0] = rs.getString("tiempo_promedio"); 
 				dataPoint[1] = rs.getString("intentos");
 				dataPoint[2] = rs.getString("applabel");
 				dataPoint[3] = rs.getString("topicname");
+				dataPoint[4] = "a";
+				id=id+1;
+				
+				
+				
 				
 				res.add(dataPoint);
 				
@@ -147,10 +153,10 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[19];
-				dataPoint[4] = rs.getString("intentos_incorrectos");
-				dataPoint[5] = rs.getString("applabel");
-				dataPoint[6] = rs.getString("topicname");
+				String[] dataPoint = new String[4];
+				dataPoint[0] = rs.getString("intentos_incorrectos");
+				dataPoint[1] = rs.getString("applabel");
+				dataPoint[2] = rs.getString("topicname");
 				
 				res.add(dataPoint);
 				
@@ -179,7 +185,7 @@ public class DBInterface {
 			ArrayList<String[]> res = new ArrayList<String[]>();
 			stmt = conn.createStatement();
 			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select  count(result) as intentos_correctos_corregidos, applabel,topicname"
+			String query = "select  count(result) as intentos_correctos, applabel,topicname"
 					+ " from activity_traces at"
 					+ " where (at.appid>0 and at.result=1 )"
 					+ " group by topicname,applabel  "
@@ -192,10 +198,10 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[19];
-				dataPoint[7] = rs.getString("intentos_correctos_corregidos");
-				dataPoint[8] = rs.getString("applabel");
-				dataPoint[9] = rs.getString("topicname");
+				String[] dataPoint = new String[4];
+				dataPoint[0] = rs.getString("intentos_correctos");
+				dataPoint[1] = rs.getString("applabel");
+				dataPoint[2] = rs.getString("topicname");
 				
 				res.add(dataPoint);
 				
@@ -236,10 +242,11 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[19];
-				dataPoint[10] = rs.getString("actividad_vista");
-				dataPoint[11] = rs.getString("applabel");
-				dataPoint[12] = rs.getString("topicname");
+				String[] dataPoint = new String[4];
+				dataPoint[0] = rs.getString("actividad_vista");
+				dataPoint[1] = rs.getString("applabel");
+				dataPoint[2] = rs.getString("topicname");
+			    dataPoint[3] = "hola";
 				
 				res.add(dataPoint);
 				
@@ -253,5 +260,7 @@ public class DBInterface {
 			return null;
 	}
 	}
+
+
 
 }
