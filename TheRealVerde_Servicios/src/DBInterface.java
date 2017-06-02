@@ -86,7 +86,6 @@ public class DBInterface {
 	 */
 	
 	public ArrayList<String[]> getSampleData() { //primera  consulta 
-		int id=0;
 		try {
 			ArrayList<String[]> res = new ArrayList<String[]>();
 			stmt = conn.createStatement();
@@ -104,16 +103,11 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[5];
+				String[] dataPoint = new String[4];
 				dataPoint[0] = rs.getString("tiempo_promedio"); 
 				dataPoint[1] = rs.getString("intentos");
 				dataPoint[2] = rs.getString("applabel");
 				dataPoint[3] = rs.getString("topicname");
-				dataPoint[4] = "a";
-				id=id+1;
-				
-				
-				
 				
 				res.add(dataPoint);
 				
