@@ -1,4 +1,4 @@
-//alert("hola felipe el mas bonito");
+    //alert("hola felipe el mas bonito");
 
 
 
@@ -38,10 +38,10 @@ var barPadding = 1;	// ??? rellenado barra
 
 var xColumn = "topic";	// nombre de la columna con los topicos en el archivo csv
 var yColumn = "time";	// nombre de la columna cn el tiempo en el archivo csv
-var rMin=1;		// radio minimo
-var rMax=6;		// radio maximo
-var rColumn = "radio";	// nombre de la columna en el archivo csv, a mayor radio mas frecuentada la actividad
 var colorColumn = "color";	// nombre de la columna en el archivo csv, dificultad, mas degradado mas facil
+var rColumn = "radio";  // nombre de la columna en el archivo csv, a mayor radio mas frecuentada la actividad
+var rMin=1;     // radio minimo
+var rMax=6;     // radio maximo
       
 var xAxisLabelText = "Topicos";		// nombre abscisa grafico
 var xAxisLabelOffset = 48;	// no se ocupa
@@ -71,41 +71,6 @@ var xAxisG = g.append("g")
 var yAxisG = g.append("g")
 	.attr("class", "y axis");
 	//.attr("transform", "translate(15,0)");
-
-
-
-// escalan los valores en el grafico
-var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
-var yScale = d3.scale.linear().range([innerHeight,30]);
-var rScale = d3.scale.linear().range([rMin, rMax]);
-var colorScale = d3.scale.category10();
-
-
-/*
-var x = d3.scale.linear()
-		.domain([0, 25])
-		.range([0, width]);
-
-var data = [1, 2, 3, 5, 8, 13, 21];
-
-var xAxis = d3.svg.axis()
-		.scale(x)
-		.orient("top")
-		.tickValues(data)
-		.innerTickSize([250])
-		.outerTickSize([250]);*/
-
-// se agregan lineas en el eje X, desde el eje a  la orientacion
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-	.outerTickSize(1); // Turn off the marks at the end of the axis.// numeros de lineas o grosor de la linea
-
-// crea las marcas en el eje Y con respecto a los datos, en este caso al tiempo
-// si el tiempo es 150 seg dividira 125/20 = 6.25 aproxima a 5, cada 5 hara una marca
-// 
-var yAxis = d3.svg.axis().scale(yScale).orient("left")
-	.ticks(20)                   // Use approximately 20 ticks marks.
-    //.tickFormat(d3.format("d")) // Use intelligent abbreviations, e.g. 5M for 5 Million
-    .outerTickSize(1);          // Turn off the marks at the end of the axis.
 
 /// crear divisores en el grafico
 var yAxisG2 = g.append("g")
@@ -147,6 +112,42 @@ var yAxisG13 = g.append("g")
 var yAxisG14 = g.append("g")
 .attr("class", "y14 axis")
 .attr("transform", "translate(740,0)");
+
+
+// escalan los valores en el grafico
+var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
+var yScale = d3.scale.linear().range([innerHeight,30]);
+var rScale = d3.scale.linear().range([rMin, rMax]);
+var colorScale = d3.scale.category10();
+
+
+/*
+var x = d3.scale.linear()
+        .domain([0, 25])
+        .range([0, width]);
+
+var data = [1, 2, 3, 5, 8, 13, 21];
+
+var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("top")
+        .tickValues(data)
+        .innerTickSize([250])
+        .outerTickSize([250]);*/
+
+// se agregan lineas en el eje X, desde el eje a  la orientacion
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+    .outerTickSize(1); // Turn off the marks at the end of the axis.// numeros de lineas o grosor de la linea
+
+// crea las marcas en el eje Y con respecto a los datos, en este caso al tiempo
+// si el tiempo es 150 seg dividira 125/20 = 6.25 aproxima a 5, cada 5 hara una marca
+// 
+var yAxis = d3.svg.axis().scale(yScale).orient("left")
+    .ticks(20)                   // Use approximately 20 ticks marks.
+    //.tickFormat(d3.format("d")) // Use intelligent abbreviations, e.g. 5M for 5 Million
+    .outerTickSize(1);          // Turn off the marks at the end of the axis.
+
+///orientacion de las lineas
 var yAxis2 = d3.svg.axis().scale(yScale).orient("left").ticks(0).outerTickSize(1);
 var yAxis3 = d3.svg.axis().scale(yScale).orient("left").ticks(0).outerTickSize(1);
 var yAxis4 = d3.svg.axis().scale(yScale).orient("left").ticks(0).outerTickSize(1);
