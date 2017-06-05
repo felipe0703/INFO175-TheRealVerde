@@ -110,9 +110,9 @@ public class GetTotalsByUser extends HttpServlet {
 		 String outString="Topic[";
 		 for(String[] row : data1) {
 				outString += "\n "
-						+ "{\"tiempo_promedio\":\"" + row[0] //datos primera consulta
-						+ "\", \"intentos\":\"" + row[1]
-						+ "\", \"actividades\":\"" + row[2]
+						+ "{\"tiempo_promedio\":" + row[0] //datos primera consulta
+						+ ", \"intentos\":" + row[1]
+						+ ", \"actividades\":\"" + row[2]
 						+ "\", \"topicos\":\"" + row[3]
 						+ "\"},";
 			}
@@ -120,8 +120,8 @@ public class GetTotalsByUser extends HttpServlet {
 		for(String[] row : data2) {
 			outString += "\n "
 					
-					+ "{\"intentos_incorrectos\":\"" + row[0] //datos segunda consulta
-					+ "\", \"actividades\":\"" + row[1]
+					+ "{\"intentos_incorrectos\":" + row[0] //datos segunda consulta
+					+ ", \"actividades\":\"" + row[1]
 					+ "\", \"topicos\":\"" + row[2]
 					+ "\"},";
 					
@@ -129,8 +129,8 @@ public class GetTotalsByUser extends HttpServlet {
 		outString = outString.substring(0, outString.length() - 1);
 		for(String[] row : data3) {
 			outString += "\n "
-					 + "{\"intentos_correctos\":\"" + row[0] //datos tercera consulta
-					 + "\", \"actividades\":\"" + row[1]
+					 + "{\"intentos_correctos\":" + row[0] //datos tercera consulta
+					 + ", \"actividades\":\"" + row[1]
 					 + "\", \"topicos\":\"" + row[2]
 					 + "\"},";
 					
@@ -138,8 +138,8 @@ public class GetTotalsByUser extends HttpServlet {
 		outString = outString.substring(0, outString.length() - 1);
 		for(String[] row : data4) {
 			outString += "\n "
-					+ "{\"actividad_vista\":\"" + row[0] //datos cuarta consulta
-					+ "\", \"actividades\":\"" + row[1]
+					+ "{\"actividad_vista\":" + row[0] //datos cuarta consulta
+					+ ", \"actividades\":\"" + row[1]
 					+ "\", \"topicos\":\"" + row[2]
 					+ "\"},";
 					
