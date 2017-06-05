@@ -76,37 +76,21 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 ## Consulta SQL a utilizar
 ```SQL
 
-// Consulta entrega tiempo promedio, intentos incorrectos, tipo de topico de las cuatro Actividades
+// consulta que entrega nombre del topico, nombre de la actividad, 
+// intentos correctos en una topico e intentos incorrectos 
+// total de intentos y por ultimo el tiempo promedio
 
-select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel as actividades, topicname as topicos
-from activity_traces
-where (durationseconds>0 and appid > 0)
-group by topicname,applabel  
-order by topicname,applabel;
-
-// Consulta entrega intentos incorrectos de las actividades "Quizpet" y "Parsons"
-
-select  count(result) as intentos_incorrectos, applabel as actividades,topicname as topicos
+select  applabel as actividades,	
+	topicname as topicos,
+        sum(result = 1) as intentos_correctos, 
+        sum(result = 0) as intentos_incorrectos,
+        count(attemptno) as intentos,
+        avg(durationseconds) as tiempo_promedio
 from activity_traces at
-where (at.appid>0 and at.result=0 )
-group by topicname,applabel  
+where (at.appid>0 and at.result>=-1 )
+group by topicname,applabel 
 order by topicname,applabel ;
 
-// Consulta entrega intentos_correctos en los topicos de las actividades "Quizpet" y "Parsons"
-
-select  count(result) as intentos_correctos, applabel as actividades,topicname as topicos
-from activity_traces at
-where (at.appid>0 and at.result=1 )
-group by topicname,applabel
-order by topicname,applabel ;
-
-// Consulta entrega numero de actividades vistas por topico para las actividades "Animated Example" y "Webex"
-
-select  count(result) as actividad_vista, applabel as actividades,topicname as topicos
-from activity_traces at
-where (at.appid>0 and at.result=-1 )
-group by topicname,applabel  
-order by topicname,applabel ;
 
 
 ```
