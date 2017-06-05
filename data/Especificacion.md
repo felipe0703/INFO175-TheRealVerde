@@ -78,17 +78,20 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 
 // consulta que entrega nombre del topico, nombre de la actividad, 
 // intentos correctos en una topico e intentos incorrectos 
-// total de intentos y por ultimo el tiempo promedio
+// total de intentos, el tiempo promedio y porcentajes de correctas e incorrectas
+// 
 
 select  applabel as actividades,	
 	topicname as topicos,
-        sum(result = 1) as intentos_correctos, 
-        sum(result = 0) as intentos_incorrectos,
+        sum(result=1) as intentos_correctos, 
+        sum(result=0 ) as intentos_incorrectos,
         count(attemptno) as intentos,
-        avg(durationseconds) as tiempo_promedio
+        avg(durationseconds) as tiempo_promedio,
+        sum(result=1)/count(attemptno) as porcentaje_correctos,
+        sum(result=0)/count(attemptno) as porcentaje_incorrectos
 from activity_traces at
 where (at.appid>0 and at.result>=-1 )
-group by topicname,applabel 
+group by topicname,applabel
 order by topicname,applabel ;
 
 
