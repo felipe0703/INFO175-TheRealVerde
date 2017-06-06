@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<!-- Cambiar a jdbc:mysql://<hostname>:<port de mysql server>/<nombre de la database> -->
-	<dbString>jdbc:mysql://localhost:3306/DBTaller</dbString>
+	<dbString>jdbc:mysql://localhost:3306/activity_traces</dbString>
 	<!-- Cambiar user y pass -->
 	<dbUser>root</dbUser>
 	<dbPass>root</dbPass>

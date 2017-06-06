@@ -90,54 +90,17 @@ public class DBInterface {
 			ArrayList<String[]> res = new ArrayList<String[]>();
 			stmt = conn.createStatement();
 			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel, topicname"
-					+ " from activity_traces"
-					+ " where (durationseconds>=0 and appid > 0)"
-					+ " group by topicname,applabel  "
-					+ " order by topicname,applabel ;"
-				
-					;
-			rs = stmt.executeQuery(query);
-
-			// rs contiene una estructura de tipo SET que contiene todas
-			// las filas de la respuesta de la base de datos
-			// guarda los datos en cada posicion asignada del arreglo
-			while (rs.next()) {
-				String[] dataPoint = new String[4];
-				dataPoint[0] = rs.getString("tiempo_promedio"); 
-				dataPoint[1] = rs.getString("intentos");
-				dataPoint[2] = rs.getString("applabel");
-				dataPoint[3] = rs.getString("topicname");
-				
-				res.add(dataPoint);
-				
-			}
-			this.releaseStatement(stmt, rs);
-			return res;
-		}
-		catch (Exception ex) {
-			System.out.println("Exception: " + ex.getMessage());
-			this.releaseStatement(stmt, rs);
-			return null;
-		}
-	}
-	/** Metodo donde recibe la segunda consulta 
-	 * (hace la consulta,
-	 * toma los datos de la base de datos,
-	 * guarda los datos en las casillas asignadas del arreglo
-	 * y retorna el arreglo)
-	 * @return
-	 */
-	
-	public ArrayList<String[]> getSampleData2() {
-		try {
-			ArrayList<String[]> res = new ArrayList<String[]>(); //se crea el arreglo dinamico
-			stmt = conn.createStatement(); 
-			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select  count(result) as intentos_incorrectos, applabel,topicname"
+			String query = "select  applabel as actividades,"
+					+ " topicname as topicos,"
+					+ " sum(result=1) as intentos_correctos,"
+					+ " sum(result=0 ) as intentos_incorrectos,"
+					+ " count(attemptno) as intentos,"
+					+ " avg(durationseconds) as tiempo_promedio,"
+					+ " sum(result=1)/count(attemptno) as porcentaje_correctos,"
+					+ " sum(result=0)/count(attemptno) as porcentaje_incorrectos"
 					+ " from activity_traces at"
-					+ " where (at.appid>0 and at.result=0 )"
-					+ " group by topicname,applabel  "
+					+ " where (at.appid>0 and at.result>=-1 )"
+					+ " group by topicname,applabel"
 					+ " order by topicname,applabel ;"
 				
 					;
@@ -147,10 +110,15 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[4];
-				dataPoint[0] = rs.getString("intentos_incorrectos");
-				dataPoint[1] = rs.getString("applabel");
-				dataPoint[2] = rs.getString("topicname");
+				String[] dataPoint = new String[7];
+				dataPoint[0] = rs.getString("actividades"); 
+				dataPoint[1] = rs.getString("topicos");
+				dataPoint[2] = rs.getString("intentos_correctos");
+				dataPoint[3] = rs.getString("intentos_incorrectos");
+				dataPoint[4] = rs.getString("intentos"); 
+				dataPoint[5] = rs.getString("tiempo_promedio");
+				dataPoint[6] = rs.getString("porcentaje_correctos");
+				dataPoint[7] = rs.getString("porcentaje_incorrectos");
 				
 				res.add(dataPoint);
 				
@@ -163,97 +131,12 @@ public class DBInterface {
 			this.releaseStatement(stmt, rs);
 			return null;
 		}
+	}
+
 	
-	}
+
 	
-	/** Metodo donde recibe la tercera  consulta 
-	 * (hace la consulta,
-	 * toma los datos de la base de datos,
-	 * guarda los datos en las casillas asignadas del arreglo
-	 * y retorna el arreglo)
-	 * @return
-	 */
-	
-	public ArrayList<String[]> getSampleData3() {
-		try {
-			ArrayList<String[]> res = new ArrayList<String[]>();
-			stmt = conn.createStatement();
-			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select  count(result) as intentos_correctos, applabel,topicname"
-					+ " from activity_traces at"
-					+ " where (at.appid>0 and at.result=1 )"
-					+ " group by topicname,applabel  "
-					+ " order by topicname,applabel ;"
-				
-					;
-			rs = stmt.executeQuery(query);
 
-			// rs contiene una estructura de tipo SET que contiene todas
-			// las filas de la respuesta de la base de datos
-			// guarda los datos en cada posicion asignada del arreglo
-			while (rs.next()) {
-				String[] dataPoint = new String[4];
-				dataPoint[0] = rs.getString("intentos_correctos");
-				dataPoint[1] = rs.getString("applabel");
-				dataPoint[2] = rs.getString("topicname");
-				
-				res.add(dataPoint);
-				
-			}
-			this.releaseStatement(stmt, rs);
-			return res;
-		}
-		catch (Exception ex) {
-			System.out.println("Exception: " + ex.getMessage());
-			this.releaseStatement(stmt, rs);
-			return null;
-	}
-	}
-
-	/** Metodo donde recibe la cuarta y ultima consulta 
-	 * (hace la consulta,
-	 * toma los datos de la base de datos,
-	 * guarda los datos en las casillas asignadas del arreglo
-	 * y retorna el arreglo)
-	 * @return
-	 */
-
-	public ArrayList<String[]> getSampleData4() {
-		try {
-			ArrayList<String[]> res = new ArrayList<String[]>();
-			stmt = conn.createStatement();
-			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select  count(result) as actividad_vista, applabel,topicname"
-					+ " from activity_traces at"
-					+ " where (at.appid>0 and at.result=-1 )"
-					+ " group by topicname,applabel  "
-					+ " order by topicname,applabel ;"
-				
-					;
-			rs = stmt.executeQuery(query);
-
-			// rs contiene una estructura de tipo SET que contiene todas
-			// las filas de la respuesta de la base de datos
-			// guarda los datos en cada posicion asignada del arreglo
-			while (rs.next()) {
-				String[] dataPoint = new String[4];
-				dataPoint[0] = rs.getString("actividad_vista");
-				dataPoint[1] = rs.getString("applabel");
-				dataPoint[2] = rs.getString("topicname");
-			    dataPoint[3] = "hola";
-				
-				res.add(dataPoint);
-				
-			}
-			this.releaseStatement(stmt, rs);
-			return res;
-		}
-		catch (Exception ex) {
-			System.out.println("Exception: " + ex.getMessage());
-			this.releaseStatement(stmt, rs);
-			return null;
-	}
-	}
 
 
 
