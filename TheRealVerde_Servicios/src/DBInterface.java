@@ -86,21 +86,19 @@ public class DBInterface {
 	 */
 	
 	public ArrayList<String[]> getSampleData() { //primera  consulta 
+		int id=0;
 		try {
 			ArrayList<String[]> res = new ArrayList<String[]>();
 			stmt = conn.createStatement();
 			//Se añade la consulta que se quiere hacer a la base de datos y se guarda en el query
-			String query = "select  applabel as actividades,"
-					+ " topicname as topicos,"
-					+ " sum(result=1) as intentos_correctos,"
-					+ " sum(result=0 ) as intentos_incorrectos,"
-					+ " count(attemptno) as intentos,"
-					+ " avg(durationseconds) as tiempo_promedio,"
-					+ " sum(result=1)/count(attemptno) as porcentaje_correctos,"
-					+ " sum(result=0)/count(attemptno) as porcentaje_incorrectos"
-					+ " from activity_traces at"
-					+ " where (at.appid>0 and at.result>=-1 )"
-					+ " group by topicname,applabel"
+			String query = "select avg(durationseconds) as tiempo_promedio , count(attemptno) as intentos, applabel as actividades, topicname as topicos,"
+					+ "		sum(result=1) as intentos_correctos, "
+					+ "		sum(result=0 ) as intentos_incorrectos,"
+					+ "		sum(result=1)/count(attemptno) as porcentaje_correctos,"
+					+ "		sum(result=0)/count(attemptno) as porcentaje_incorrectos"
+					+ " from activity_traces"
+					+ " where (durationseconds>=0 and appid > 0)"
+					+ " group by topicname,applabel  "
 					+ " order by topicname,applabel ;"
 				
 					;
@@ -110,15 +108,18 @@ public class DBInterface {
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
 			while (rs.next()) {
-				String[] dataPoint = new String[7];
-				dataPoint[0] = rs.getString("actividades"); 
+				String[] dataPoint = new String[9];
+				dataPoint[0] = rs.getString("actividades");
 				dataPoint[1] = rs.getString("topicos");
 				dataPoint[2] = rs.getString("intentos_correctos");
 				dataPoint[3] = rs.getString("intentos_incorrectos");
-				dataPoint[4] = rs.getString("intentos"); 
-				dataPoint[5] = rs.getString("tiempo_promedio");
+				dataPoint[4] = rs.getString("intentos");
+				dataPoint[5] = rs.getString("tiempo_promedio"); 	
 				dataPoint[6] = rs.getString("porcentaje_correctos");
 				dataPoint[7] = rs.getString("porcentaje_incorrectos");
+			
+				
+				
 				
 				res.add(dataPoint);
 				
@@ -132,12 +133,13 @@ public class DBInterface {
 			return null;
 		}
 	}
-
+	/** Metodo donde recibe la segunda consulta 
+	 * (hace la consulta,
+	 * toma los datos de la base de datos,
+	 * guarda los datos en las casillas asignadas del arreglo
+	 * y retorna el arreglo)
+	 * @return
+	 */
 	
-
 	
-
-
-
-
 }
