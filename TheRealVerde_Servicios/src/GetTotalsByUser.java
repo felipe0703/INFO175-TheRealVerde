@@ -50,8 +50,8 @@ public class GetTotalsByUser extends HttpServlet {
 		ArrayList<String[]> data1 = dbInterface.getSampleData();
 		dbInterface.closeConnection(); // cerrar la conexión
 		// obtener el objeto flujo de salida (para imprimir la respuesta)
-		PrintWriter out = response.getWriter();								
-		
+		PrintWriter out = response.getWriter();
+									
 		// escribir la respuesta
 		out.print(outAsJSON4(data1));
 		
@@ -71,19 +71,20 @@ public class GetTotalsByUser extends HttpServlet {
 		 String outString="Topic[";
 		 for(String[] row : data1) {
 				outString += "\n "
-						+ "{\"Actividades\":" + row[0] //datos primera consulta
-						+ ", \"Topicos\":" + row[1]
-						+ ", \"Intentos_Correctos\":\"" + row[2]
-						+ ", \"Intentos_Incorrectos\":\"" + row[3]
-						+ ", \"Intentos\":\"" + row[4]
-						+ ", \"Tiempo_Promedio\":\"" + row[5]
-						+ ", \"Porcentaje_Correctos\":\"" + row[6]
-						+ ", \"Porcentaje_Incorrectos\":\"" + row[7]
-						+ "\"},";
+						+ "{\"actividades\": \"" + row[0] //datos primera consulta
+						+ "\", \"topicos\": \"" + row[1]
+						+ "\", \"intentos_correctos\": " + row[2]
+						+ ", \"intentos_incorrectos\": " + row[3]
+						+ ", \"intentos\": " + row[4]
+						+ ", \"tiempo_promedio\": " + row[5] 
+						+ ", \"porcentaje_correctos\": " + row[6]
+						+ ", \"porcentaje_incorrectos\": " + row[7]
+						
+						
+						+ "},";
 			}
-		outString = outString.substring(0, outString.length() - 1);
 		
-		outString += "\n]";
+		outString = outString.substring(0, outString.length() - 1)+"\n ]";
 		
 		return outString;
 		
