@@ -34,7 +34,7 @@
 var outerWidth =1230;  	// ancho exterior del grafico
 var outerHeight = 560;	// altura exterior del grafico
 var margin = { left: 80, top: 30, right: 30, bottom: 30 };	// margenes desde los bordes de la ventana del grafico
-var barPadding = 2;	// ??? rellenado barra
+var barPadding = 2;	//  rellenado barra
 
 var xColumn = "topic";	// nombre de la columna con los topicos en el archivo csv
 var yColumn = "time";	// nombre de la columna cn el tiempo en el archivo csv
