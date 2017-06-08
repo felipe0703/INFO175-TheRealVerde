@@ -56,7 +56,7 @@ var innerHeight = outerHeight - margin.top  - margin.bottom;	// altura interior
 /// se agrega al cuerpo el ancho y el alto de la ventana de visualizacion
 var svg = d3.select("body").append("svg")
 	.attr("width",  outerWidth)
-	.attr("height", outerHeight*1.5);
+	.attr("height", outerHeight*1.2);
 
 // ubicar grafico en ventana
 var g = svg.append("g")
@@ -73,9 +73,7 @@ var yAxisG = g.append("g")
 	//.attr("transform", "translate(15,0)");
 
 /// crear divisores en el grafico
-var yAxisG2 = g.append("g")
-.attr("class", "y2 axis")
-.attr("transform", "translate(80,0)");
+var yAxisG2 = g.append("g").attr("class", "y2 axis").attr("transform", "translate(80,0)");
 var yAxisG3 = g.append("g")
 .attr("class", "y3 axis")
 .attr("transform", "translate(160,0)");
@@ -176,19 +174,41 @@ var yAxisLabel = yAxisG.append("text")
     .text(yAxisLabelText);  
 
 
-
-
-
+var c1=4;
+for (var i = 20; i < innerWidth; i=i+20 ) {
+    	if(i != c1*20){
+    		var linea = g.append("line").attr("x1",i).attr("y1",495).attr("x2",i).attr("y2",505).attr("stroke-width",1).attr("stroke","black");
+    	}
+        else{
+            c1=c1+4;
+        }
+} 
   ///funcion que carga los datos del archivo, aclarar que este es un archivo de ejemplo  
 function render(data){
 	
 	xScale.domain(data.map( function (d){ return d[xColumn]; }));
     yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]);// escala y dibuja el circulo entre 0 y el maximo de los datos de la columna tiempo
     rScale.domain(d3.extent(data, function (d){ return d[rColumn]; }));
+    
+   
+    
+   
+   
 
+    var circles = g.selectAll("circle").data(data);
+    circles.enter().append("circle");
+    circles
+		.attr("cx",      function (d){ return       xScale(d[xColumn]);     })
+        .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
+        .attr("r",       function (d){ return       rScale(d[rColumn]);     })
+        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); });
+    
+    
+    
+    
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
-    /*yAxisG2.call(yAxis2);
+    yAxisG2.call(yAxis2);
     yAxisG3.call(yAxis3);
     yAxisG4.call(yAxis4);
     yAxisG5.call(yAxis5);
@@ -200,16 +220,9 @@ function render(data){
     yAxisG11.call(yAxis11);
     yAxisG12.call(yAxis12);
     yAxisG13.call(yAxis13);
-    yAxisG14.call(yAxis14);*/
+    yAxisG14.call(yAxis14);
+    
    
-
-    var circles = g.selectAll("circle").data(data);
-    circles.enter().append("circle");
-    circles
-		.attr("cx",      function (d){ return       xScale(d[xColumn]);     })
-        .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
-        .attr("r",       function (d){ return       rScale(d[rColumn]);     })
-        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); });
 
 	circles.exit().remove();
 }

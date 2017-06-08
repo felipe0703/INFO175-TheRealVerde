@@ -188,7 +188,7 @@ function render(data){
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
-    /*yAxisG2.call(yAxis2);
+    yAxisG2.call(yAxis2);
     yAxisG3.call(yAxis3);
     yAxisG4.call(yAxis4);
     yAxisG5.call(yAxis5);
@@ -200,7 +200,7 @@ function render(data){
     yAxisG11.call(yAxis11);
     yAxisG12.call(yAxis12);
     yAxisG13.call(yAxis13);
-    yAxisG14.call(yAxis14);*/
+    yAxisG14.call(yAxis14);
    
 
     var circles = g.selectAll("circle").data(data);
