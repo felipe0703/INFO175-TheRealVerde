@@ -34,7 +34,7 @@
 var outerWidth =1230;  	// ancho exterior del grafico
 var outerHeight = 560;	// altura exterior del grafico
 var margin = { left: 80, top: 30, right: 30, bottom: 30 };	// margenes desde los bordes de la ventana del grafico
-var barPadding = 1;	// ??? rellenado barra
+var barPadding = 2;	// ??? rellenado barra
 
 var xColumn = "topic";	// nombre de la columna con los topicos en el archivo csv
 var yColumn = "time";	// nombre de la columna cn el tiempo en el archivo csv
@@ -56,11 +56,11 @@ var innerHeight = outerHeight - margin.top  - margin.bottom;	// altura interior
 /// se agrega al cuerpo el ancho y el alto de la ventana de visualizacion
 var svg = d3.select("body").append("svg")
 	.attr("width",  outerWidth)
-	.attr("height", outerHeight*1.2);
+	.attr("height", outerHeight);
 
 // ubicar grafico en ventana
 var g = svg.append("g")
-	.attr("transform", "translate(" + margin.left *2+ "," + margin.top*2 + ")");
+	.attr("transform", "translate(" + margin.left *2+ "," + margin.top + ")");
 
 // ubica el eje de las abscisa (X)
 var xAxisG = g.append("g")
@@ -74,68 +74,35 @@ var yAxisG = g.append("g")
 
 /// crear divisores en el grafico
 var yAxisG2 = g.append("g").attr("class", "y2 axis").attr("transform", "translate(80,0)");
-var yAxisG3 = g.append("g")
-.attr("class", "y3 axis")
-.attr("transform", "translate(160,0)");
-var yAxisG4 = g.append("g")
-.attr("class", "y4 axis")
-.attr("transform", "translate(240,0)");
-var yAxisG5 = g.append("g")
-.attr("class", "y5 axis")
-.attr("transform", "translate(320,0)");
-var yAxisG6 = g.append("g")
-.attr("class", "y6 axis")
-.attr("transform", "translate(400,0)");
-var yAxisG7 = g.append("g")
-.attr("class", "y7 axis")
-.attr("transform", "translate(480,0)");
-var yAxisG8 = g.append("g")
-.attr("class", "y8 axis")
-.attr("transform", "translate(560,0)");
-var yAxisG9 = g.append("g")
-.attr("class", "y9 axis")
-.attr("transform", "translate(640,0)");
-var yAxisG10 = g.append("g")
-.attr("class", "y10 axis")
-.attr("transform", "translate(720,0)");
-var yAxisG11 = g.append("g")
-.attr("class", "y11 axis")
-.attr("transform", "translate(800,0)");
-var yAxisG12 = g.append("g")
-.attr("class", "y12 axis")
-.attr("transform", "translate(880,0)");
-var yAxisG13 = g.append("g")
-.attr("class", "y13 axis")
-.attr("transform", "translate(960,0)");
-var yAxisG14 = g.append("g")
-.attr("class", "y14 axis")
-.attr("transform", "translate(740,0)");
+var yAxisG3 = g.append("g").attr("class", "y3 axis").attr("transform", "translate(160,0)");
+var yAxisG4 = g.append("g").attr("class", "y4 axis").attr("transform", "translate(240,0)");
+var yAxisG5 = g.append("g").attr("class", "y5 axis").attr("transform", "translate(320,0)");
+var yAxisG6 = g.append("g").attr("class", "y6 axis").attr("transform", "translate(400,0)");
+var yAxisG7 = g.append("g").attr("class", "y7 axis").attr("transform", "translate(480,0)");
+var yAxisG8 = g.append("g").attr("class", "y8 axis").attr("transform", "translate(560,0)");
+var yAxisG9 = g.append("g").attr("class", "y9 axis").attr("transform", "translate(640,0)");
+var yAxisG10 = g.append("g").attr("class", "y10 axis").attr("transform", "translate(720,0)");
+var yAxisG11 = g.append("g").attr("class", "y11 axis").attr("transform", "translate(800,0)");
+var yAxisG12 = g.append("g").attr("class", "y12 axis").attr("transform", "translate(880,0)");
+var yAxisG13 = g.append("g").attr("class", "y13 axis").attr("transform", "translate(960,0)");
+var yAxisG14 = g.append("g").attr("class", "y14 axis").attr("transform", "translate(740,0)");
 
 
 // escalan los valores en el grafico
 var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
 var yScale = d3.scale.linear().range([innerHeight,30]);
-var rScale = d3.scale.linear().range([rMin, rMax]);
+//var rScale = d3.scale.linear().range([rMin, rMax]);
 var colorScale = d3.scale.category10();
 
 
 /*
-var x = d3.scale.linear()
-        .domain([0, 25])
-        .range([0, width]);
-
+var x = d3.scale.linear().domain([0, 25]).range([0, width]);
 var data = [1, 2, 3, 5, 8, 13, 21];
-
-var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("top")
-        .tickValues(data)
-        .innerTickSize([250])
-        .outerTickSize([250]);*/
+var xAxis = d3.svg.axis().scale(x).orient("top").tickValues(data).innerTickSize([250]).outerTickSize([250]);
+*/
 
 // se agregan lineas en el eje X, desde el eje a  la orientacion
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-    .outerTickSize(1); // Turn off the marks at the end of the axis.// numeros de lineas o grosor de la linea
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom").outerTickSize(1); // Turn off the marks at the end of the axis.// numeros de lineas o grosor de la linea
 
 // crea las marcas en el eje Y con respecto a los datos, en este caso al tiempo
 // si el tiempo es 150 seg dividira 125/20 = 6.25 aproxima a 5, cada 5 hara una marca
@@ -173,7 +140,7 @@ var yAxisLabel = yAxisG.append("text")
     .attr("class", "label")
     .text(yAxisLabelText);  
 
-
+// dibuja las marcas divisoras(subzonas)
 var c1=4;
 for (var i = 20; i < innerWidth; i=i+20 ) {
     	if(i != c1*20){
@@ -183,29 +150,74 @@ for (var i = 20; i < innerWidth; i=i+20 ) {
             c1=c1+4;
         }
 } 
+   
+
+
+
+
+
+
   ///funcion que carga los datos del archivo, aclarar que este es un archivo de ejemplo  
-function render(data){
-	
-	xScale.domain(data.map( function (d){ return d[xColumn]; }));
+/*function render(data){
+    
+    xScale.domain(data.map( function (d){ return d[xColumn]; }));
     yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]);// escala y dibuja el circulo entre 0 y el maximo de los datos de la columna tiempo
     rScale.domain(d3.extent(data, function (d){ return d[rColumn]; }));
-    
-   
-    
-   
-   
 
     var circles = g.selectAll("circle").data(data);
     circles.enter().append("circle");
     circles
-		.attr("cx",      function (d){ return       xScale(d[xColumn]);     })
+        .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
         .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
         .attr("r",       function (d){ return       rScale(d[rColumn]);     })
-        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); });
+        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); });  
     
+
+    circles.exit().remove();
+}
+  
+function type(d){
+    d.population = +d.population;
+    d.time = +d.time;
+        
+    return d;
+}
+     
+
+d3.csv("topic.csv", type, render);
+
+*/
+
+function render(data){
+
     
-    
-    
+var minIntentos = d3.min(data, function (d){return d.intentos});
+var maxIntentos = d3.max(data, function (d){return d.intentos});
+var rScale = d3.scale.linear().domain([minIntentos, maxIntentos]).range([5,30]);
+
+var circles = g.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle");
+
+var circleAttributes = circles
+                       .attr("cx", 30)
+                       .attr("cy",function (d) { return d.tiempo_promedio; })
+                       .attr("r",function (d) { return rScale(d.intentos); })
+                       .style("fill", function(d) { 
+                        var returnColor;
+                        if(d.actividades == "ANIMATED_EXAMPLE"){
+                            returnColor = "purple";
+                        }else if(d.actividades == "WEBEX"){
+                            returnColor = "red";
+                        }else if(d.actividades == "PARSONS"){
+                            returnColor = "blue";
+                        }else {
+                            returnColor = "green";
+                        }
+                        return returnColor; 
+                        });
+
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
     yAxisG2.call(yAxis2);
@@ -221,19 +233,11 @@ function render(data){
     yAxisG12.call(yAxis12);
     yAxisG13.call(yAxis13);
     yAxisG14.call(yAxis14);
-    
-   
-
-	circles.exit().remove();
 }
-  
-function type(d){
-	d.population = +d.population;
-    d.time = +d.time;
-        
-    return d;
+/*function yScale(data){
+    var minTiempo = d3.min(data, function (d){return d.tiempo_promedio});
+    var maxTiempo = d3.max(data, function (d){return d.tiempo_promedio});
+    var y = d3.scale.linear().domain([minTiempo,maxTiempo]).range([innerHeight,30]);
 }
-     
-
-d3.csv("topic.csv", type, render);
-
+*/
+d3.json("scripts/data.json",render);
