@@ -24,8 +24,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	porcentaje_incorrectos: number,   	//numero que representa el porcentaje de intentos incorrectos/intentos de tal actividad
 	numero_columna: number,			//contador que servira para la posicion de la actividad en su topico respectivo(no definida en la consulta )
 	}
-     ]
-  }
+  
 ]
 
 ```
@@ -69,8 +68,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	porcentaje_incorrectos:0,0,
 	numero_columna: 775
 	}
-    ]
-  }
+ 
 ]
 ```
 
