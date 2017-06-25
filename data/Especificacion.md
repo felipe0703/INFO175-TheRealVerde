@@ -13,17 +13,16 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 // TOPIC object:
 
 [
-  { 
-    "Id_topico" : String, 
-    "Actividades" : [
 	{	
-	"id_actividad": number, 		//identificador del tipo de actividad
-	tipo: "String", 		        //dato String
-	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
-	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico. 	
+	actividad: "String ",			//nombre de la actividad.
+	topico: "String", 		        //nombre del topico al cual corresponde la actividad.
+	intentos_correctos:number    //numero de intentos correctos en una actividad por parte de los usuarios en un topico.
 	intentos_incorrectos: number, 		//numero de errores en una actividad por parte de los usuarios en un topico.
-	intentos_correctos:number    //numero de intentos correctos en una actividad por parte de los usuarios en un topico 
-	numero_columna: number,			//contador que servira para la posicion de la actividad en su topico respectivo
+	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico.
+	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
+	porcentaje_correctos: number,		//numero que representa el porcentaje de intentos correctos/intentos de tal actividad	
+	porcentaje_incorrectos: number,   	//numero que representa el porcentaje de intentos incorrectos/intentos de tal actividad
+	numero_columna: number,			//contador que servira para la posicion de la actividad en su topico respectivo(no definida en la consulta )
 	}
      ]
   }
@@ -37,40 +36,38 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 // TOPIC object:
 
 [
-  { 
-    "Id_topico" : "Functions", 
-    "Actividades" : [
 	{	
-	"id_actividad": 1, 
-	tipo: Question, 
-	tiempo_promedio: 35.1, 
+	actividad: "PARSONS",
+	topico: " classes_objects", 
+	intentos_correctos: 5,
+	intentos_incorrectos: 6,
 	intentos: 10,
-	intentos_incorrectos: 6
-	intentos_correctos: 5
+	tiempo_promedio: 35.1, 
+	porcentaje_correctos:0,67,
+	porcentaje_incorrectos:0,15,
 	numero_columna: 15
 	},
-	{	
-	"id_actividad": 10, 
-	tipo: Parson, 
-	tiempo_promedio: 23.1, 
-	intentos: 6,
-	intentos_incorrectos: 4
-	intentos_correctos: 6
+	{
+	actividad: "QUIZPET",
+	topico: "if_statements", 
+	intentos_correctos: 10,
+	intentos_incorrectos: 20,
+	intentos: 23,
+	tiempo_promedio: 50.3, 
+	porcentaje_correctos:0,80,
+	porcentaje_incorrectos:0,30,
 	numero_columna: 35
-	
-    ]
   },
   { 
-    "Id_topico" : "Exceptions", 
-    "Actividades" : [
-	{	
-	"id_actividad": 4, 
-	tipo: Parsons, 
-	tiempo_promedio: 10, 
-	intentos: 3,
-	intentos_incorrectos: 2
-	intentos_correctos: 5
-	numero_columna:55
+	actividad: "WEBEX",
+	topico: "loops", 
+	intentos_correctos: 0,
+	intentos_incorrectos: 0,
+	intentos: 132,
+	tiempo_promedio: 4.3, 
+	porcentaje_correctos:0,0,
+	porcentaje_incorrectos:0,0,
+	numero_columna: 775
 	}
     ]
   }
