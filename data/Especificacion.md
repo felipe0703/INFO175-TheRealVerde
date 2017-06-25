@@ -22,7 +22,8 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
 	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico. 	
 	intentos_incorrectos: number, 		//numero de errores en una actividad por parte de los usuarios en un topico.
-	intentos_correctos:number    //numero de intentos correctos en una actividad por parte de los usuarios en un topico           
+	intentos_correctos:number    //numero de intentos correctos en una actividad por parte de los usuarios en un topico 
+	numero_columna: number,			//contador que servira para la posicion de la actividad en su topico respectivo
 	}
      ]
   }
@@ -46,6 +47,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	intentos: 10,
 	intentos_incorrectos: 6
 	intentos_correctos: 5
+	numero_columna: 15
 	},
 	{	
 	"id_actividad": 10, 
@@ -54,6 +56,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	intentos: 6,
 	intentos_incorrectos: 4
 	intentos_correctos: 6
+	numero_columna: 35
 	
     ]
   },
@@ -67,6 +70,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	intentos: 3,
 	intentos_incorrectos: 2
 	intentos_correctos: 5
+	numero_columna:55
 	}
     ]
   }
