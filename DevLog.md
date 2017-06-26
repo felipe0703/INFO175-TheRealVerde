@@ -82,7 +82,14 @@ Definimos parametros que nos faltaban, la dificultad, escala de colores y otros,
   - Mejorar la leyenda: Para el caso de los circulos discretizar los tamaños y colocarlos cada uno con sus respectivos valores
   - Dividir el código: Se nos sugirió dividir el código para la parte de selección de color de las actividades en el caso de las actividades de modo que sea mas fácil para una persona que conociendo el código.
   
+  ---------------------------------------------------------------------------------------------------------------------------------
   
+                                      Reunión Jueves 22 de Junio
+                                      
+ En reunión con el profesor se nos informo que una vez completado el servicio, este debe ser enviado a Fabian Sanchez. Además se aclara que en la visualización los topicos de un tipo en una cierta actividad son promediados, por tanto solo se mostrarán los circulos de forma que será uno por topico promediado para cada actividad. También se debe cambiar el nombre de los servicios, ya que, es el mismo en que venían por defecto.
+ Finalmente, queda fijada una presentación ante el curso para el proximo jueves mostrando los avances que tengamos hasta esa fecha.
+ 
+ --------------------------------------------------------------------------------------------------------------------------------
 
   
 
