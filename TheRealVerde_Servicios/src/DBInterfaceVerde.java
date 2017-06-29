@@ -7,7 +7,7 @@ import java.util.*;
  * @author Julio Guerra
  *
  */
-public class DBInterface {
+public class DBInterfaceVerde {
 	protected String dbString; //  variable del link de la base de datos
 	protected String dbUser;   // variable del usuario de la base de datos
 	protected String dbPass;   // variable de la contraseña de la base de datos 
@@ -16,7 +16,7 @@ public class DBInterface {
 	protected Statement stmt = null; 
 	protected ResultSet rs = null;
 	
-	public DBInterface(String connurl, String user, String pass){
+	public DBInterfaceVerde(String connurl, String user, String pass){
 		dbString = connurl; // contiene el link de la base de datos donde se encuentran las tablas
 		dbUser = user; // contiene el usuario de la base de datos
 		dbPass = pass; // contiene la contraseña de la base de datos
@@ -107,7 +107,9 @@ public class DBInterface {
 			// rs contiene una estructura de tipo SET que contiene todas
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
+			int i=15;
 			while (rs.next()) {
+				String h ="";
 				String[] dataPoint = new String[9];
 				dataPoint[0] = rs.getString("actividades");
 				dataPoint[1] = rs.getString("topicos");
@@ -117,6 +119,9 @@ public class DBInterface {
 				dataPoint[5] = rs.getString("tiempo_promedio"); 	
 				dataPoint[6] = rs.getString("porcentaje_correctos");
 				dataPoint[7] = rs.getString("porcentaje_incorrectos");
+				h = String.valueOf(i);
+				dataPoint[8] =(h);
+				i=i+20;
 			
 				
 				

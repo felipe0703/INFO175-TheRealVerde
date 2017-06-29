@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class GetTotalsByUser
+ * Servlet implementation class GetTotalsByTopic
  * 
  * Ver el método doGet
  */
-@WebServlet("/GetTotalsByUser")
-public class GetTotalsByUser extends HttpServlet {
+@WebServlet("/GetTotalsByTopic")
+public class GetTotalsByTopic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private DBInterface dbInterface; // dbInterface es para conectarse a la base de datos
+    private DBInterfaceVerde dbInterface; // dbInterface es para conectarse a la base de datos
 
-    public GetTotalsByUser() {
+    public GetTotalsByTopic() {
         super();
     }
 
@@ -43,7 +43,7 @@ public class GetTotalsByUser extends HttpServlet {
 		//PRIMERA CONSULTA 
 		
 		// Se inicializa el objeto de conexión a la base de datos 
-		dbInterface = new DBInterface(cm.dbString, cm.dbUser, cm.dbPass);
+		dbInterface = new DBInterfaceVerde(cm.dbString, cm.dbUser, cm.dbPass);
 		dbInterface.openConnection(); // abrir la conexión
 		
 		// llamada a la función getSampleData que hace la consulta a la base de datos
@@ -68,7 +68,7 @@ public class GetTotalsByUser extends HttpServlet {
 	
 
 	private String outAsJSON4(ArrayList<String[]> data1) {
-		 String outString="Topic[";
+		 String outString="[";
 		 for(String[] row : data1) {
 				outString += "\n "
 						+ "{\"actividades\": \"" + row[0] //datos primera consulta
@@ -79,7 +79,7 @@ public class GetTotalsByUser extends HttpServlet {
 						+ ", \"tiempo_promedio\": " + row[5] 
 						+ ", \"porcentaje_correctos\": " + row[6]
 						+ ", \"porcentaje_incorrectos\": " + row[7]
-						
+						+ ", \"numero_columna\": "+ row[8]
 						
 						+ "},";
 			}
