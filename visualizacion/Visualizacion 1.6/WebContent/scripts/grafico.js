@@ -203,7 +203,7 @@ var circles = g.selectAll("circle")
 
 
 var circleAttributes = circles
-                       .attr("cx", function (d) {return d.numero_columna -3;})
+                       .attr("cx", function (d) {return d.numero_columna ;})
                        .attr("cy",function (d) { return d.tiempo_promedio; })
                        .attr("r",function (d) { return rScale(d.intentos); })
                        .style("fill", function(d) { 
