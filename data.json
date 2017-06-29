@@ -1,4 +1,4 @@
-Topic[
+[
  {"actividades": "ANIMATED_EXAMPLE", "topicos": "classes_objects", "intentos_correctos": 0, "intentos_incorrectos": 0, "intentos": 1756, "tiempo_promedio": 6.0979, "porcentaje_correctos": 0.0000, "porcentaje_incorrectos": 0.0000, "numero_columna": 15},
  {"actividades": "PARSONS", "topicos": "classes_objects", "intentos_correctos": 91, "intentos_incorrectos": 171, "intentos": 262, "tiempo_promedio": 36.9809, "porcentaje_correctos": 0.3473, "porcentaje_incorrectos": 0.6527, "numero_columna": 35},
  {"actividades": "QUIZPET", "topicos": "classes_objects", "intentos_correctos": 259, "intentos_incorrectos": 223, "intentos": 482, "tiempo_promedio": 125.3983, "porcentaje_correctos": 0.5373, "porcentaje_incorrectos": 0.4627, "numero_columna": 55},
