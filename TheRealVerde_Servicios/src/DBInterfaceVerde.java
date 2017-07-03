@@ -107,7 +107,25 @@ public class DBInterfaceVerde {
 			// rs contiene una estructura de tipo SET que contiene todas
 			// las filas de la respuesta de la base de datos
 			// guarda los datos en cada posicion asignada del arreglo
-			int i=15;
+			int i = 0;
+			int ae = 26;
+			int p = 78;
+			int q = 130;
+			int w = 182;
+			int cla_obj = 0;
+			int comp = 208;
+			int dic = 416;
+			int exc = 624;
+			int fi_han = 832;
+			int func = 1040;
+			int if_st = 1248;
+			int lis = 1456;
+			int log_op = 1664;
+			int loo = 1872;
+			int ou_for = 2080;
+			int str = 2288;
+			int val_ref = 2496;
+			int var = 2704;
 			while (rs.next()) {
 				String h ="";
 				String[] dataPoint = new String[9];
@@ -119,15 +137,55 @@ public class DBInterfaceVerde {
 				dataPoint[5] = rs.getString("tiempo_promedio"); 	
 				dataPoint[6] = rs.getString("porcentaje_correctos");
 				dataPoint[7] = rs.getString("porcentaje_incorrectos");
+
+
+
+				if (dataPoint[0] == "ANIMATED_EXAMPLE"){
+					i = i + ae;
+				}else if (dataPoint[0] == "PARSONS"){
+					i = i + p;
+				}else if (dataPoint[0] == "QUIZPET"){
+					i = i + q;
+				}else {
+					i = i + w;
+				}
+
+				if (dataPoint[1] == "classes_objects") {
+					i = i +cla_obj;
+				} else if (dataPoint[1] == "Comparison") {
+					i = i + comp;
+				} else if (dataPoint[1] == "dictionary") {
+					i = i + dic;
+				} else if (dataPoint[1] == "exceptions") {
+					i = i + exc;
+				} else if (dataPoint[1] == "file_handling") {
+					i = i + fi_han;
+				} else if (dataPoint[1] == "Functions") {
+					i = i + func;
+				} else if (dataPoint[1] == "if_statements") {
+					i = i + if_st;
+				} else if (dataPoint[1] == "Lists") {
+					i = i + lis;
+				} else if (dataPoint[1] == "logical_operators") {
+					i = i + log_op;
+				} else if (dataPoint[1] == "loops") {
+					i = i + loo;
+				} else if (dataPoint[1] == "output_formatting") {
+					i = i + ou_for;
+				} else if (dataPoint[1] == "strings") {
+					i = i + str;
+				} else if (dataPoint[1] == "values_references") {
+					i = i + val_ref;
+				} else {
+					i = i + var;
+				}
+				
+
 				h = String.valueOf(i);
 				dataPoint[8] =(h);
-				i=i+20;
+				i = 0;
 			
-				
-				
-				
-				res.add(dataPoint);
-				
+				res.add(dataPoint);				
 			}
 			this.releaseStatement(stmt, rs);
 			return res;
