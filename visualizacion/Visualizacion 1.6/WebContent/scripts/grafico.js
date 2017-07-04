@@ -39,8 +39,6 @@ var innerWidth  = outerWidth  - margin.left - margin.right;		// ancho interior
 var innerHeight = outerHeight - margin.top  - margin.bottom;	// altura interior 
 
 // VARIABLES EJES      
-//var xAxisLabelText = "Topicos";     // nombre abscisa grafico
-//var xAxisLabelOffset = 48;  // no se ocupa
 var yAxisLabelText = "Tiempo(s) Promedio";  // nombre ordenada grafico
 var yAxisLabelOffset = 45;      // ubicacion del texto en el eje X
 
@@ -58,13 +56,21 @@ var colorP_I = "rgb(116,169,207)";
 var colorP_F = "rgb(43,140,190)";
 var colorP_MF = "rgb(4,90,141)";
 
-//var posicion;
-
 /// se agrega al cuerpo el ancho y el alto de la ventana de visualizacion
 var svg = d3.select("body").append("svg")
 	.attr("width",  outerWidth)
 	.attr("height", outerHeight+50);
-
+    
+/// cambio de color en el grafico para mayor claridad
+for (var i = 81; i < outerWidth-30; i = i + 52) {
+    if (bool) {
+        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorP_MD);
+        bool = false;
+    } else {
+        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorQ_MD);
+        bool = true;
+    }   
+}
 // ubicar grafico en ventana
 var g = svg.append("g")
 	.attr("transform", "translate(" + margin.left+ "," + margin.top + ")");
@@ -72,12 +78,7 @@ var g = svg.append("g")
 // ubica el eje de las abscisa (X)
 var xAxisG = g.append("g")
 	.attr("class", "x axis")
-	.attr("transform", "translate(0," + (innerHeight+50) + ")");
-
-/*var xAxisG2 = g.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + innerHeight + ")");
-*/
+	.attr("transform", "translate(0," + (innerHeight + 50) + ")");
 
 var yAxisG = g.append("g")
 	.attr("class", "y axis");
@@ -85,17 +86,7 @@ var yAxisG = g.append("g")
 
 
 /// escalan los valores en el grafico
-//var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
-//var xScale = d3.scale.ordinal().domain(["a","b","c","d"]).rangeBands(0, innerWidth);
-//var yScale = d3.scale.linear().domain([0, 130]).range([innerHeight,0]);
-//var rScale = d3.scale.linear().range([rMin, rMax]);
 //var colorScale = d3.scale.category10();
-/*
-var x = d3.scale.linear().domain([0, 25]).range([0, width]);
-var data = [1, 2, 3, 5, 8, 13, 21];
-var xAxis = d3.svg.axis().scale(x).orient("top").tickValues(data).innerTickSize([250]).outerTickSize([250]);
-*/
-
         
 var yAxisG = g.append("g")
     .attr("class", "y axis")
@@ -108,19 +99,11 @@ var yAxisLabel = yAxisG.append("text")
     .attr("class", "label")
     .text(yAxisLabelText);  
 
-// dibuja las marcas divisoras(subzonas)
-/*var c1=4;
-for (var i = 52; i < innerWidth; i=i+52 ) {
-        if(i != c1*52){
-            var linea = g.append("line").attr("x1",i).attr("y1",495).attr("x2",i).attr("y2",505).attr("stroke-width",1).attr("stroke","black");
-        }
-        else{
-            c1=c1+4;
-        }
-} 
-*/
-
 var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+var bool = true;
+/*
+
+*/
 /*
  var sele = d3.selectAll("input")
 	.on("change", changed);
@@ -145,7 +128,6 @@ function transitionOff() {
 	alert("off");
 }
 */
-//var posicion = 0;
 ///FUNCION QUE CARGA LOS DATOS DEL ARCHIVO JSON
 function render(data){
 
@@ -153,16 +135,10 @@ function render(data){
     var maxIntentos = d3.max(data, function (d){return d.intentos});
     var maxTiempo = d3.max(data, function (d){return d.tiempo_promedio;});
     var minTiempo = d3.min(data, function (d){return d.tiempo_promedio;});
-    //var minTop = d3.min(data, function (d){return d.numero_columna});
-    //var maxTop = d3.max(data, function (d){return d.numero_columna});
-
 
     var yScale = d3.scale.linear().domain([0, maxTiempo]).range([innerHeight,0]);
     var yScale2 = d3.scale.linear().domain([0, maxTiempo]).range([innerHeight + 50,0])
     var rScale = d3.scale.linear().domain([minIntentos, maxIntentos]).range([5,25]);
-   /* var tScale = d3.scale.linear().domain([minTiempo,maxIntentos]);
-    var topScale = d3.scale.linear().domain([minTop,maxTop]).range([25,innerWidth-25]);
-*/
     var topicosScale = d3.scale.ordinal().domain([
             "classes_objects",
             "Comparison",
@@ -180,11 +156,6 @@ function render(data){
             "variables"])
         .rangeBands([0,innerWidth],[1],[0.5]);
     
-  /* var xScale = d3.scale.ordinal()
-        .domain(["ANIMATED_EXAMPLE","PARSONS","QUIZPET","WEBEX"])
-        .rangeBands([0,208],[1],[0.5]);
-    */
-  
     /// GENERA LOS EJES
     var yAxis = d3.svg.axis().scale(yScale).orient("left")
         .ticks(10) // Use approximately 10 ticks marks.
@@ -210,13 +181,7 @@ function render(data){
          yAxisG2.call(yAxis2);
     }
 
-
-
-/*
-    svg
-        .datum(data)
-        .on("click", click);
-*/
+    
     var circles = g.selectAll("circle")
                     .data(data)
                     .enter()
@@ -235,9 +200,6 @@ function render(data){
 
 
     var circleAttributes = circles
-                        //.attr("cx", function (d) {return  topicosScale(d.numero_columna);})
-                        //.attr("cx", function (d) { return xScale(d.actividades); })
-                        //.attr("cx", function (d) { return topicosScale(d.topicos);})
                         .attr("cx", function (d) { return d.numero_columna;})
                         .attr("cy", function (d) { return yScale(d.tiempo_promedio);} )
                         .attr("r", function (d) { return rScale(d.intentos); })
@@ -276,13 +238,11 @@ function render(data){
                             return returnColor; 
                         });
 
-                    
+    
 
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
-   // svg.call(tip);
-   //posicion = 0;
 
     function click() {
     	var n = data.length-1;
