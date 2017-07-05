@@ -1,0 +1,101 @@
+header {
+	background: #2c3e50;
+	color: #fff;
+}
+.color1 {
+	background: #34495e;
+	color: #fff;
+}
+.color2 {
+	background: #f2f2f2;
+}
+.color3 {
+	background: #c0392b;
+	color: #fff;
+}
+
+.color4 {
+	background: #16a085;
+	color: #fff;
+}
+
+footer {
+	background: #16a085;
+	color: #fff;
+}
+
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #a8e79e;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #f9f9f9;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 600px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }
+
+            
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+            
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.toolTip {
+  position: absolute;
+  display: none;
+  min-width: 80px;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #6F257F;
+  padding: 14px;
+  text-align: center;
+}
+
+.graf{
+    height:620px;
+    width:1024px;
+    overflow:auto;
+    background:#ffffff;
+}
