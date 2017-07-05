@@ -45,49 +45,51 @@ var yAxisLabelOffset = 45;      // ubicacion del texto en el eje X
 ///VARIABLES COLOR
 var colorAE = "rgb(197,27,138)";
 var colorW = "rgb(248,0,0)";
-var colorQ_MD = "rgb(237,248,251)";
-var colorQ_D = "rgb(178,226,226)";
-var colorQ_I = "rgb(102,194,164)";
-var colorQ_F = "rgb(44,162,95)";
-var colorQ_MF = "rgb(0,109,44)";
-var colorP_MD = "rgb(241,238,246)";
-var colorP_D = "rgb(189,201,225)";
-var colorP_I = "rgb(116,169,207)";
-var colorP_F = "rgb(43,140,190)";
-var colorP_MF = "rgb(4,90,141)";
+
+var colorQ_MD = "rgb(135, 54, 0)";
+var colorQ_D = "rgb(147, 81, 22)";
+var colorQ_I = "rgb(81, 90, 90)";
+var colorQ_F = "rgb(29, 131, 72)";
+var colorQ_MF = "rgb(25, 111, 61)";
+
+var colorP_MD = "rgb(123, 36, 28)";
+var colorP_D = "rgb(99, 57, 116)";
+var colorP_I = "rgb(81, 90, 90)";
+var colorP_F = "rgb(40, 116, 166)";
+var colorP_MF = "rgb(26, 82, 118)";
+
+var colorBar = "rgb(139,228,100)";
+var colorBar2 = "rgb(255,255,255)";
 
 /// se agrega al cuerpo el ancho y el alto de la ventana de visualizacion
-var svg = d3.select("body").append("svg")
+//var svg = d3.select("body").append("svg")
+var svg = d3.select("#grafico").append("svg")
 	.attr("width",  outerWidth)
 	.attr("height", outerHeight+50);
-    
+
 /// cambio de color en el grafico para mayor claridad
+var bool = true;
 for (var i = 81; i < outerWidth-30; i = i + 52) {
     if (bool) {
-        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorP_MD);
+        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorBar);
         bool = false;
     } else {
-        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorQ_MD);
+        var rectangle = svg.append("rect").attr("x", i).attr("y", 20).attr("width", 52).attr("height",560).style("fill-opacity", 0.5).style("fill", colorBar2);
         bool = true;
     }   
 }
 // ubicar grafico en ventana
 var g = svg.append("g")
-	.attr("transform", "translate(" + margin.left+ "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left+ "," + margin.top + ")");
 
 // ubica el eje de las abscisa (X)
 var xAxisG = g.append("g")
-	.attr("class", "x axis")
-	.attr("transform", "translate(0," + (innerHeight + 50) + ")");
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + (innerHeight + 50) + ")");
 
 var yAxisG = g.append("g")
-	.attr("class", "y axis");
-	//.attr("transform", "translate(15,0)");
+    .attr("class", "y axis");
 
-
-/// escalan los valores en el grafico
-//var colorScale = d3.scale.category10();
-        
 var yAxisG = g.append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(0,0)");
@@ -100,10 +102,7 @@ var yAxisLabel = yAxisG.append("text")
     .text(yAxisLabelText);  
 
 var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-var bool = true;
-/*
 
-*/
 /*
  var sele = d3.selectAll("input")
 	.on("change", changed);
@@ -155,7 +154,6 @@ function render(data){
             "values_references",
             "variables"])
         .rangeBands([0,innerWidth],[1],[0.5]);
-    
     /// GENERA LOS EJES
     var yAxis = d3.svg.axis().scale(yScale).orient("left")
         .ticks(10) // Use approximately 10 ticks marks.
@@ -186,17 +184,41 @@ function render(data){
                     .data(data)
                     .enter()
                     .append("circle")
+                    //.on("click", click);
+                    .on("click", function(d){
+                    	d3.select("#divInfo")
+                            .selectAll('div')
+                            .data(data)
+                            .enter()
+                            .append('div')
+                            .text(function(d2){
+                                if(d == d2){ 
+                                    return d2.actividades;
+                                }
+                            });
+                    });
+
+    var cirDestacado = circles
                     .on("mousemove", function(d){
-                        tooltip
+                    	tooltip
                           .style("left", d3.event.pageX - 50 + "px")
                           .style("top", d3.event.pageY - 70 + "px")
                           .style("display", "inline-block")
                           .html((d.actividades) + ":" + (d.tiempo_promedio));
-                    })
-                    .on("mouseout", function(d){ tooltip.style("display", "none");})
-                    .on("click", click);
 
-    
+                        cirDestacado.attr("fill-opacity", function (d2) {
+	                        if (d.actividades != d2.actividades) {
+	                            return 0.1;
+	                        }else{
+	                        	return 1;
+	                        }
+	                    })
+                    })
+                    .on("mouseout", function(d){ 
+                        tooltip.style("display", "none");
+                        cirDestacado.attr("fill-opacity",1);
+                    });
+                
 
 
     var circleAttributes = circles
@@ -238,15 +260,36 @@ function render(data){
                             return returnColor; 
                         });
 
-    
-
-
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
 
     function click() {
-    	var n = data.length-1;
-    	alert("chupala");
+        var arr = ["string1","string2","string3","string4","string5"];
+        d3.select("#divInfo")
+        /* 
+            .append('div')
+            .html(arr.join('<br/>'))
+        */
+        
+            .selectAll('span')
+            .data(data)
+            .enter()
+            .append('span')
+            .text(function(d){
+              return d.actividades;
+            })
+            .append('br');
+        
+        /*
+            .selectAll('div')
+            .data(data)
+            .enter()
+            .append('div')
+            .text(function(d){
+              return d.actividades;
+            });
+        */
+    	//alert("chupala");
     }
 }
 

@@ -92,3 +92,10 @@ body {
   padding: 14px;
   text-align: center;
 }
+
+.graf{
+    height:620px;
+    width:1024px;
+    overflow:auto;
+    background:#ffffff;
+}
