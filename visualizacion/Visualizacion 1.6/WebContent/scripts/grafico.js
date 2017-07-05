@@ -43,7 +43,7 @@ var yAxisLabelText = "Tiempo(s) Promedio";  // nombre ordenada grafico
 var yAxisLabelOffset = 45;      // ubicacion del texto en el eje X
 
 ///VARIABLES COLOR
-var colorAE = "rgb(197,27,138)";
+var colorAE = "rgb(247, 243, 14)";
 var colorW = "rgb(248,0,0)";
 
 var colorQ_MD = "rgb(135, 54, 0)";
@@ -179,23 +179,29 @@ function render(data){
          yAxisG2.call(yAxis2);
     }
 
-    
+    var div = d3.select("#divInfo");
     var circles = g.selectAll("circle")
                     .data(data)
                     .enter()
                     .append("circle")
                     //.on("click", click);
                     .on("click", function(d){
-                    	d3.select("#divInfo")
-                            .selectAll('div')
+                    	var texto;
+                        //div.exit().remove();
+                    	//var t = d.actividades;
+                    	div.selectAll("div")
                             .data(data)
                             .enter()
-                            .append('div')
+                            .append("div")
                             .text(function(d2){
-                                if(d == d2){ 
+                            	texto = "";
+                                if(d == d2){                                 	
+                                	texto = d2.actividades;
                                     return d2.actividades;
                                 }
                             });
+                    	//div.enter().append("div").text(function(d) { return d; });
+                    	div.exit().remove();
                     });
 
     var cirDestacado = circles
