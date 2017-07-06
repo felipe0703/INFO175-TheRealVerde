@@ -700,7 +700,6 @@ function click() {
           return d.actividades;
         });
     */
-	//alert("chupala");
 }
 }
 
