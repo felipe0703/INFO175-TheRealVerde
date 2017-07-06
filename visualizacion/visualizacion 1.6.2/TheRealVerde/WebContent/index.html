@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visualizacion Web</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"  href="css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+	<link rel="stylesheet" href="estilos.css">
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+
+    <!-- 
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="virtualscroller.js"></script>
+	-->
+
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>Taller de Construccion de software</h1>
+		</div>
+	</header>
+	<!--<div class="container">	-->
+		 <div class="row">
+			<div class="color2 col-md-12">
+				<div class="container">
+					<div id="grafico" class="graf">
+						<script src="scripts/grafico.js"></script>
+					</div>
+				</div>
+			</div>
+		 </div>
+	<!--</div>-->
+
+	<div class="container-fluid">
+		<div class="row">			
+			<div class="color1 col-xs-12 col-sm-6 col-md-2">		
+				<h3>Actividades</h3>
+				<div id="questions" class="container">
+		          <label>
+                <input  type="checkbox" data-toggle="toggle">
+                Questions
+		          </label>
+		        </div>
+				<div id="parsons"  class="container">
+		          <label>
+                <input type="checkbox" data-toggle="toggle">
+		            Parsons
+		          </label>
+		        </div>        
+		        
+		        
+		        <div id="webex" class="container">
+		          <label>
+                <input  type="checkbox" data-toggle="toggle">
+		            Webex
+		          </label>
+		        </div>
+		        
+		                
+		         <div id="animated" class="container">
+		           <label>
+                <input  type="checkbox" data-toggle="toggle">
+		            Animated
+		          </label>
+		         </div>        	
+		         
+			</div>
+
+			<div class="color2 col-xs-12 col-sm-6 col-md-3">
+				<h3>Leyenda</h3>
+				<div>
+				<label>Actividades con dificultad</label>	
+				</div>
+				<div>
+					<svg width ="100" height= "15" >
+						<text x="0" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    MD
+						</text>	
+						<text x="20" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    D
+						</text>
+						<text x="35" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    I
+						</text>
+						<text x="50" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    F
+						</text>
+						<text x="62" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    MF
+						</text>
+					</svg>
+				</div>
+				<div>
+					<svg width ="200" height= "15" >
+						<rect fill="rgb(237,248,251)" width="15" height="15" x="0"></rect>
+						<rect fill="rgb(178,226,226)" width="15" height="15" x="15"></rect>
+						<rect fill="rgb(102,194,164)" width="15" height="15" x="30"></rect>
+						<rect fill="rgb(44,162,95)" width="15" height="15" x="45"></rect>
+						<rect fill="rgb(0,109,44)" width="15" height="15" x="60"></rect>
+						<text x="85" y="13"
+							font-family="Verdana"
+							font-size="16"
+							fill="black">
+						    Question (Q)
+						</text>					
+					</svg>
+				</div>
+				<div>
+					<svg width ="100" height= "15" >
+						<text x="0" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    MD
+						</text>	
+						<text x="20" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    D
+						</text>
+						<text x="35" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    I
+						</text>
+						<text x="50" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    F
+						</text>
+						<text x="62" y="13"
+							font-family="Verdana"
+							font-size="9"
+							fill="black">
+						    MF
+						</text>
+					</svg>
+				</div>
+				<div>
+					<svg width ="200" height= "15" >
+						<rect fill="rgb(241,238,246)" width="15" height="15" x="0"></rect>
+						<rect fill="rgb(189,201,225)" width="15" height="15" x="15"></rect>
+						<rect fill="rgb(116,169,207)" width="15" height="15" x="30"></rect>
+						<rect fill="rgb(43,140,190)" width="15" height="15" x="45"></rect>
+						<rect fill="rgb(4,90,141)" width="15" height="15" x="60"></rect>
+						<text x="85" y="13"
+							font-family="Verdana"
+							font-size="16"
+							fill="black">
+						    Parsons (P)
+						</text>					
+					</svg>
+				</div>
+				<div><label>Actividades sin dificultad</label></div>
+				<div>
+					<svg width ="200" height= "15" >
+						<rect fill="rgb(248,0,0)" width="15" height="15" x="0"></rect>
+						<text x="25" y="13"
+							font-family="Verdana"
+							font-size="16"
+							fill="black">
+						    Webex (W)
+						</text>
+					</svg>
+				</div>
+				<div>
+					<svg width ="210" height= "15" >
+						<rect fill="rgb(197,27,138)" width="15" height="15" x="0"></rect>
+						<text x="25" y="13"
+							font-family="Verdana"
+							font-size="16"
+							fill="black">
+						    Animated Example(AE)
+						</text>
+					</svg>
+				</div>
+				<div><label>-Tamaño: Frecuencia en la Actividad</label></div>
+				<div><label>-Eje ordenada: Tiempo Promedio en la Actividad</label></div>
+				<div><label>-Eje Abscisa: Topicos y Actividades</label></div>
+
+</div> 
+			<div id="divInfo" class="color3 col-xs-12 col-sm-12 col-md-7">
+				<h3>Informacion</h3>
+			</div>
+			<div id="divInfo2" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			<div id="divInfo3" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			<div id="divInfo4" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			<div id="divInfo5" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			<div id="divInfo6" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			<div id="divInfo7" 	class="color3 col-xs-12 col-sm-12 col-md-7">
+				
+			</div>
+			
+		</div>
+	</div>
+<footer>	
+		<div class="container">	
+			<h3>The Real Verde</h3>
+		</div>			
+	</footer>
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
