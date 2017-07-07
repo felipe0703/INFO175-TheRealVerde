@@ -1,34 +1,3 @@
-//<style>
-//	form {
-//		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-//	    position: absolute;
-//	    left: 10px;
-//	    top: 10px;
-//	}
-//	
-//	label {
-//		display: block;
-//	}
-//
-//	.axis text {
-//		font-family: 'Poiret One', cursive;
-//		font-size: 10pt;
-//	}
-//	.axis .label {
-//		font-size: 16pt;
-//	}
-//
-//	.axis path, .axis line {
-//		fill: none;
-//		stroke: #000;
-//		shape-rendering: crispEdges;
-//	}
-//</style>
-
-
-
-
-
             
 /// VARIABLES DEL ESPACIO DONDE SE GRAFICARA
 var outerWidth =3022;  	// ancho exterior del grafico 1170
@@ -62,7 +31,6 @@ var colorBar = "rgb(139,228,100)";
 var colorBar2 = "rgb(255,255,255)";
 
 /// se agrega al cuerpo el ancho y el alto de la ventana de visualizacion
-//var svg = d3.select("body").append("svg")
 var svg = d3.select("#grafico").append("svg")
 	.attr("width",  outerWidth)
 	.attr("height", outerHeight+50);
@@ -103,38 +71,14 @@ var yAxisLabel = yAxisG.append("text")
 
 var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
-/*
- var sele = d3.selectAll("input")
-	.on("change", changed);
-
-
-var timeout = d3.timeout(function() {
-	  d3.select("input[ value=\"default\" ]")
-	      .property("checkbox", false)
-	      .dispatch("change");
-	}, 2000);
-
-function changed() {
-	timeout.stop();
-	if (this.value === "On") transitionOn();
-	else transitionOff();
-}
-function transitionOn() {
-	alert("On");
-}
-
-function transitionOff() {
-	alert("off");
-}
-*/
 ///FUNCION QUE CARGA LOS DATOS DEL ARCHIVO JSON
 function render(data){
-
+    // CALCULOS DE VALORES MAXIMOS Y MINIMOS DE LOS DATOS
     var minIntentos = d3.min(data, function (d){return d.intentos});
     var maxIntentos = d3.max(data, function (d){return d.intentos});
     var maxTiempo = d3.max(data, function (d){return d.tiempo_promedio;});
     var minTiempo = d3.min(data, function (d){return d.tiempo_promedio;});
-
+    // ESCALAMIENTO DE LOS DATOS
     var yScale = d3.scale.linear().domain([0, maxTiempo]).range([innerHeight,0]);
     var yScale2 = d3.scale.linear().domain([0, maxTiempo]).range([innerHeight + 50,0])
     var rScale = d3.scale.linear().domain([minIntentos, maxIntentos]).range([5,25]);
@@ -179,38 +123,133 @@ function render(data){
          yAxisG2.call(yAxis2);
     }
 
-    var div = d3.select("#divInfo");
+    //  SE SELECCIONA LTODOS LOS CIRCULOS Y SE EJECUTAN FUNCIONES COMO LA FUNCION CLICK
     var circles = g.selectAll("circle")
                     .data(data)
                     .enter()
                     .append("circle")
-                    //.on("click", click);
                     .on("click", function(d){
-                    	var texto;
-                        //div.exit().remove();
-                    	//var t = d.actividades;
-                    	div.selectAll("div")
+                        d3.select("#divInfo").selectAll('div').remove();
+                        d3.select("#divInfo2").selectAll('div').remove();
+                        d3.select("#divInfo3").selectAll('div').remove();
+                        d3.select("#divInfo4").selectAll('div').remove();
+                        d3.select("#divInfo5").selectAll('div').remove();
+                        d3.select("#divInfo6").selectAll('div').remove();
+                        d3.select("#divInfo7").selectAll('div').remove();
+                        d3.select("#divInfo")
+                            .selectAll('div')
                             .data(data)
                             .enter()
-                            .append("div")
+                            .append('div')
                             .text(function(d2){
-                            	texto = "";
-                                if(d == d2){                                 	
-                                	texto = d2.actividades;
-                                    return d2.actividades;
-                                }
+                                A=null;
+                                if(d == d2){
+                                    var A=" Nombre Actividad : "+d.actividades;                                
+                                    return A;                                  
+                                }                                
                             });
-                    	//div.enter().append("div").text(function(d) { return d; });
-                    	div.exit().remove();
+                        d3.select("#divInfo2")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            A=null;
+                            if(d == d2){
+                                var A=" Nombre topico: "+d.topicos;
+                                return A;                              
+                            }                            
+                        });                        
+                        d3.select("#divInfo3")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            if(d == d2){
+                                A=null;
+                                var A=" Cantidad de intentos : "+d.intentos;
+                                return A;                              
+                            }                            
+                        });
+                        d3.select("#divInfo4")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            if(d == d2){
+                                A=null;
+                                var A=" Cantidad intentos correctos : "+d.intentos_correctos;
+                                return A;                              
+                            }                            
+                        });
+                        d3.select("#divInfo5")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            if(d == d2){
+                                A=null;
+                                var A=" Cantidad intentos incorrectos : "+d.intentos_incorrectos;
+                                return A;                              
+                            }                            
+                        });
+                        d3.select("#divInfo6")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            if(d == d2){
+                                A=null;
+                                var A=" Tiempo promedio en la actividad : "+d.tiempo_promedio;
+                                return A;                              
+                            }                            
+                        });
+                        d3.select("#divInfo7")
+                        .selectAll('div')
+                        .data(data)
+                        .enter()
+                        .append('div')
+                        .text(function(d2){
+                            if(d == d2){
+                                if((d.porcentaje_correctos - d.porcentaje_incorrectos)< -0.6){
+                                    var A=" Nivel de dificultad : Muy Dificil";
+                                }else if ((d.porcentaje_correctos - d.porcentaje_incorrectos) < -0.2){
+                                    var A=" Nivel de dificultad : Dificil ";
+                                }else if((d.porcentaje_correctos - d.porcentaje_incorrectos)< 0.2){
+                                    var A=" Nivel de dificultad : Intermedio ";
+                                }else if((d.porcentaje_correctos - d.porcentaje_incorrectos) < 0.6){
+                                    var A=" Nivel de dificultad :  Facil ";
+                                }else{
+                                    var A=" Nivel de dificultad : Muy Facil";
+                                }                                
+                                return A;
+                            }                            
+                        });                        
                     });
-
+    // A LOS CIRCULOS SE LE APLICA LA FUNCION MOUSEOVER
     var cirDestacado = circles
                     .on("mousemove", function(d){
+                        var resp = "";
+                        if((d.porcentaje_correctos - d.porcentaje_incorrectos)< -0.6){
+                            resp= "Muy Dificil";
+                        }else if ((d.porcentaje_correctos - d.porcentaje_incorrectos) < -0.2){
+                            resp = " Dificil ";
+                        }else if((d.porcentaje_correctos - d.porcentaje_incorrectos)< 0.2){
+                            resp = "Intermedio ";
+                        }else if((d.porcentaje_correctos - d.porcentaje_incorrectos) < 0.6){
+                            resp = " Facil ";
+                        }else{
+                            resp = "Muy Facil";
+                        }
                     	tooltip
                           .style("left", d3.event.pageX - 50 + "px")
                           .style("top", d3.event.pageY - 70 + "px")
                           .style("display", "inline-block")
-                          .html((d.actividades) + ":" + (d.tiempo_promedio));
+                          .html("Tiempo promedio :" + (d.tiempo_promedio)+" <br /> Dficultad : "+resp);
 
                         cirDestacado.attr("fill-opacity", function (d2) {
 	                        if (d.actividades != d2.actividades) {
@@ -224,9 +263,7 @@ function render(data){
                         tooltip.style("display", "none");
                         cirDestacado.attr("fill-opacity",1);
                     });
-                
-
-
+    // A LOS CIRCULOS SE LE ASIGNAN LOS VALORES QUE VIENEN DESDE EL JSON, COMO POSICION TIEMPO ETC
     var circleAttributes = circles
                         .attr("cx", function (d) { return d.numero_columna;})
                         .attr("cy", function (d) { return yScale(d.tiempo_promedio);} )
@@ -268,35 +305,7 @@ function render(data){
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
-
-    function click() {
-        var arr = ["string1","string2","string3","string4","string5"];
-        d3.select("#divInfo")
-        /* 
-            .append('div')
-            .html(arr.join('<br/>'))
-        */
-        
-            .selectAll('span')
-            .data(data)
-            .enter()
-            .append('span')
-            .text(function(d){
-              return d.actividades;
-            })
-            .append('br');
-        
-        /*
-            .selectAll('div')
-            .data(data)
-            .enter()
-            .append('div')
-            .text(function(d){
-              return d.actividades;
-            });
-        */
-    	//alert("chupala");
-    }
 }
 
 d3.json("scripts/data.json",render);
+//d3.json("146.83.216.206/INFO175_Servicios/data2.json",render);

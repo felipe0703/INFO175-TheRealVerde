@@ -195,8 +195,7 @@ function render(data){
                             .enter()
                             .append('div')
                             .text(function(d2){
-                                if(d == d2){ 
-                                	
+                                if(d == d2){                                 	
                                     return d2.actividades;
                                 }
                             });
@@ -340,7 +339,7 @@ function render(data){
     var prendidoParsons=false;
     var prendidoAnimated=false;
     var prendidoQuestions=false;
-    g.selectAll("circle").attr("fill-opacity",0);
+   // g.selectAll("circle").attr("fill-opacity",0);
     function webexFiltro(){
     //	g.selectAll("circle").attr("fill-opacity",0);
     
@@ -543,7 +542,7 @@ function render(data){
         				 if(d2.actividades== "WEBEX"){
         					 return 1;
         				 }
-        			 }
+        			 }prendidoQuestions
         			 if(prendidoParsons){
         				 if(d2.actividades== "PARSONS"){
         					 return 1;
