@@ -90,13 +90,14 @@ Definimos parametros que nos faltaban, la dificultad, escala de colores y otros,
  Finalmente, queda fijada una presentación ante el curso para el proximo jueves mostrando los avances que tengamos hasta esa fecha.
  
  --------------------------------------------------------------------------------------------------------------------------------
-                                       Reunión 04 de julio de 2017
+                                      	Reunión 04 de julio de 2017
 
 En esta reunión se definieron los últimos avances a realizar como grupo, mediante el cual se establecieron las siguientes tareas a cada uno:
--	Felipe Aguilera: Seguira mejorando la visualización, en la parte del grafico y detalles en general
--	Matías Carcamo: Mejorara la leyenda de forma que se pueda establecer claramente el circulo por tamaños de acuerdo al nivel de frecuencia.
+-	Felipe Aguilera: Seguirá mejorando la visualización, en la parte del gráfico y detalles en general
+-	Matías Cárcamo: Mejorara la leyenda de forma que se pueda establecer claramente el circulo por tamaños de acuerdo con el nivel de frecuencia.
 -	Rene Fuentes: Implementara la información en click.  Esta es la que mediante la cual al hacer click sobre un circulo de la visualización, en la parte de información se mostraran datos de interés sobre los datos que representa el circulo elegido.
--	Felipe Zabala: Desarrollara los filtros para la visualización para lograr una visual mas clara en algunas situaciones.
+-	Felipe Zabala: Desarrollara los filtros para la visualización para lograr una visual más clara en algunas situaciones.
+
 
 --------------------------------------------------------------------------------------------------------------------------------                                 
                                        Presentación Final 06 de Julio
