@@ -90,7 +90,13 @@ Definimos parametros que nos faltaban, la dificultad, escala de colores y otros,
  Finalmente, queda fijada una presentación ante el curso para el proximo jueves mostrando los avances que tengamos hasta esa fecha.
  
  --------------------------------------------------------------------------------------------------------------------------------
-                                    Presentación Final 06 de Julio
+                                 
+                                 
+                                 
+                                                  
+                                 
+--------------------------------------------------------------------------------------------------------------------------------                                 
+                                       Presentación Final 06 de Julio
                                     
  Esta fue la última presentación del curso, aqui se mostro nuestra visualización final como equipo mediante el formato "demo", a esta presentacion del curso asistieron compañeros de la carrera, asi como tambien de profesores e invitados varios. También se dispuso de jugo y galletas en nuestra presentacion para una mejor llegada con las personas que se acercaban a conocer nuestro trabajo.
   
