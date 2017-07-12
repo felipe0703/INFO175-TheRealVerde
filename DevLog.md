@@ -98,10 +98,6 @@ En esta reunión se definieron los últimos avances a realizar como grupo, media
 -	Rene Fuentes: Implementara la información en click.  Esta es la que mediante la cual al hacer click sobre un circulo de la visualización, en la parte de información se mostraran datos de interés sobre los datos que representa el circulo elegido.
 -	Felipe Zabala: Desarrollara los filtros para la visualización para lograr una visual mas clara en algunas situaciones.
 
-                                 
-                                 
-                                                  
-                                 
 --------------------------------------------------------------------------------------------------------------------------------                                 
                                        Presentación Final 06 de Julio
                                     
