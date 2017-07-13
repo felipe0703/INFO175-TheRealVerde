@@ -16,7 +16,7 @@ Este JSON mostrará la información respecto a cada topico enfocado a nuestra pr
 	{	
 	actividad: "String ",			//nombre de la actividad.
 	topico: "String", 		        //nombre del topico al cual corresponde la actividad.
-	intentos_correctos:number    //numero de intentos correctos en una actividad por parte de los usuarios en un topico.
+	intentos_correctos:number               //numero de intentos correctos en una actividad por parte de los usuarios en un topico.
 	intentos_incorrectos: number, 		//numero de errores en una actividad por parte de los usuarios en un topico.
 	intentos: number, 	 		//numero de intentos de actividad por parte de los usuarios en un topico.
 	tiempo_promedio: number, 		//tiempo promedio aproximado en el que se realiza una actividad
